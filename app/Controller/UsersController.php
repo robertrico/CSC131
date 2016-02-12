@@ -24,7 +24,7 @@ class UsersController extends AppController {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
 
-		$this->set('label', 'iusaht');
+		$this->set('label', 'Ham');
 
 	}
 
