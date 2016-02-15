@@ -22,7 +22,14 @@ class UsersController extends AppController {
  */
 	public function index() {
 		$this->User->recursive = 0;
-		$this->set('users', $this->Paginator->paginate());
+
+		$users = $this->Paginator->paginate();
+		foreach($users as $index => $user){
+			if($user['User']['username'] == 'Rob'){
+				$users[$index]['User']['email'] = 'Not Available';	
+			}
+		}
+		$this->set('users', $users);
 
 		$this->set('label', 'Ham');
 
