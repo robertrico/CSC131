@@ -30,7 +30,6 @@ class UsersController extends AppController {
 			}
 		}
 		$this->set('users', $users);
-
 		$this->set('label', 'Ham');
 
 	}

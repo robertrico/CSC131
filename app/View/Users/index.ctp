@@ -52,3 +52,5 @@
 		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
 	</ul>
 </div>
+<script>
+</script>
