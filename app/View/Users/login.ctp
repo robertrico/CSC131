@@ -9,6 +9,7 @@
         echo $this->Form->input('password');
     ?>
     </fieldset>
-<?php echo $this->Form->end(__('Login')); ?>
+<?php echo $this->Form->button(__('Login'),array('type'=>'submit','class'=>'btn btn-success')); ?>
+<?php echo $this->Form->button(__('Add User'),array('type'=>'button','class'=>'btn btn-primary')); ?>
 </div>
 

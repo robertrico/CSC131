@@ -35,13 +35,12 @@ class AppController extends Controller {
 		'DebugKit.Toolbar',
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'posts',
+                'controller' => 'users',
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
-                'home'
+                'controller' => 'users',
+                'action' => 'index'
             ),
             'authenticate' => array(
                 'Form' => array(
