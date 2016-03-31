@@ -1,0 +1,97 @@
+.login-panel {
+	margin-top:50%;
+	margin-bottom:50%;
+}
+.navbar-default {
+    background-color: #002E21;
+    border-color: #EAC760;
+    color: #EAC760 !important;
+}
+.btn-default {
+    border-color : #002E21;
+    background-color : #EAC760;
+	font-family: 'Audiowide', cursive;
+}
+.panel-default {
+    border-color: #EAC760;
+}
+.panel-default > .panel-heading{
+    background-color: #002E21;
+    color: #EAC760;
+}
+.navbar-brand{
+	font-family: 'Audiowide', cursive;
+	font-size: 30px;
+    color: #EAC760 !important;
+}
+ 
+@media (max-width: 780px) {
+	.login-panel {
+		margin-top:0%;
+		margin-bottom:0%;
+	}
+}
+@media (max-width: 430px) {
+	.navbar-brand{
+		font-size: 18px;
+	}
+	.footer {
+		display:none;
+	}
+	.login-panel {
+		margin-top:0%;
+		margin-bottom:0%;
+	}
+}
+@media (max-width: 400px) {
+	.navbar-brand{
+		font-size: 15px;
+	}
+	.footer {
+		display:none;
+	}
+	.login-panel {
+		margin-top:0%;
+		margin-bottom:0%;
+	}
+}
+@media (max-width: 350px) {
+	.navbar-brand{
+		font-size: 13px;
+	}
+	.footer {
+		display:none;
+	}
+	.login-panel {
+		margin-top:0%;
+		margin-bottom:0%;
+	}
+}
+.gold-text{
+    color: #EAC760;
+}
+.head-link{
+    color: #EAC760;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+	margin-bottom: 45px;
+}
+.footer > .container{
+	margin-top:10px;
+}
+.footer {
+	background-color: #002E21;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 45px;
+}

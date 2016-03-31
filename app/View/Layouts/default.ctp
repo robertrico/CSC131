@@ -21,14 +21,15 @@
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+	<link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
 	<title>
 		Community Service Portal
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic.css');
 		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('cake-style');
 		echo $this->Html->script('jquery-1.12.0.min');
 		echo $this->Html->script('bootstrap.min');
 
@@ -38,17 +39,9 @@
 		echo $this->fetch('script');
 	?>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <style>
-      body {
-        padding-top: 100px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
-
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -57,24 +50,12 @@
   </head>
 
   <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-		  <h1><?php echo $this->Html->link('MEP - Community Service Portal',array('action'=>'/')); ?></h1>
-		<h4>
-          <a href="#">Home</a></li>
-          <a href="#about">About</a></li>
-          <a href="#contact">Contact</a></li>
-		</h4>
-        </div>
-      </div>
-    </div>
-
+	<?php echo $this->element('header'); ?>
     <div class="container">
 		<?php echo $this->Session->flash(); ?>
 		<?php echo $this->fetch('content'); ?>
     </div> <!-- /container -->
+	<?php echo $this->element('footer'); ?>
   </body>
 </html>
 
