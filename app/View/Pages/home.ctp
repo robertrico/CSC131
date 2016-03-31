@@ -5,10 +5,12 @@
 		</div>
 		<div class="panel-body">
 			<ul>	
-				<li>Event 1</li>	
-				<li>Event 2</li>	
-				<li>Event 3</li>	
-				<li>Event 4</li>	
+				<li><?php echo $this->Html->link('All Events',array('controller'=>'events','action'=>'index')); ?></li>	
+				<?php foreach ($events as $event): ?>
+					<li>
+						<?php echo $this->Html->link(__($event['Event']['name']), array('controller'=>'events','action' => 'view', $event['Event']['id'])); ?>
+					</li>	
+				<?php endforeach; ?>
 			</ul>	
 		</div>
 	</div>
