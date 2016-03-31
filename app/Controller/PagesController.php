@@ -64,8 +64,18 @@ class PagesController extends AppController {
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
-		$this->Event->recursive = 0;
-		$this->set('events', $this->Paginator->paginate('Event'));
+		$options = array(
+			'conditions'=>array(
+			),
+			'fields'=>array(
+				'Event.id',
+				'Event.name'
+			),
+			'limit'=>10,
+			'order'=>'time ASC'
+
+		);
+		$this->set('events', $this->Event->find('all',$options));
 
 		try {
 			$this->render(implode('/', $path));

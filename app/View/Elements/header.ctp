@@ -13,18 +13,18 @@
 		<input type="hidden" name="ie" value="utf-8" />
 		<input type="hidden" name="hl" value="" />
 		<div class="form-group">
-			<input class="form-control"name="q" type="text" size="40" />
+			<input class="form-control"name="q" type="text" size="40" disabled="disabled"/><?php /*Disabled for now*/?>
 		</div>
-		<input class="btn btn-default" type="submit" name="sa" value="Search" />
+		<input class="btn btn-default" type="submit" name="sa" value="Search" disabled="disabled"/><?php /*Disabled for now*/?>
 	</form>
 	<script type="text/javascript" src="https%3A%2F%2Fcse.google.com%2Fcse/tools/onthefly?form=searchbox_demo&lang="></script>
 	<ul class="nav navbar-nav navbar-right">
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quick Links <span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
-				<li><a href="#">Another action</a></li>
-				<li><a href="#">Something else here</a></li>
+				<li><?php echo $this->Html->link('Home','/');?></li>
+				<li><?php echo $this->Html->link('My Profile',array('controller'=>'users','action'=>'view',$this->Session->read('Auth.User.id')));?></li>
+				<li><?php echo $this->Html->link('Events',array('controller'=>'events','action'=>'index'));?></li>
 				<li role="separator" class="divider"></li>
 				<li><a href="#">Separated link</a></li>
 			</ul>
