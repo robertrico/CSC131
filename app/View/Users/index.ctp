@@ -1,5 +1,4 @@
-<div class="users index">
-	<h2><?php echo __($label); ?></h2>
+	<h2>Users</h2>
 	<table class="table table-striped" cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
@@ -45,10 +44,3 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-	</ul>
-</div>
