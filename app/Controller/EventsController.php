@@ -13,7 +13,7 @@ class EventsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Session');
 
 /**
  * index method
@@ -49,10 +49,10 @@ class EventsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
-				$this->Flash->success(__('The event has been saved.'));
+				$this->Session->setFlash(__('The event has been saved.','default'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Flash->error(__('The event could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The event could not be saved. Please, try again.','default'));
 			}
 		}
 	}
@@ -70,10 +70,10 @@ class EventsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Event->save($this->request->data)) {
-				$this->Flash->success(__('The event has been saved.'));
+				$this->Session->setFlash(__('The event has been saved.','default'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Flash->error(__('The event could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The event has not been saved.','default'));
 			}
 		} else {
 			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
@@ -95,9 +95,9 @@ class EventsController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Event->delete()) {
-			$this->Flash->success(__('The event has been deleted.'));
+			$this->Session->setFlash(__('The event has been deleted.','default'));
 		} else {
-			$this->Flash->error(__('The event could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The event has not been deleted.','default'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

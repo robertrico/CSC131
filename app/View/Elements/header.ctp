@@ -19,7 +19,6 @@
 	</form>
 	<script type="text/javascript" src="https%3A%2F%2Fcse.google.com%2Fcse/tools/onthefly?form=searchbox_demo&lang="></script>
 	<ul class="nav navbar-nav navbar-right">
-		<li><?php echo $this->Html->link('Logout',array('controller'=>'users','action'=>'logout'));?></li>
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 			<ul class="dropdown-menu">
@@ -30,6 +29,7 @@
 				<li><a href="#">Separated link</a></li>
 			</ul>
 		</li>
+		<li><?php echo $this->Html->link('Logout',array('controller'=>'users','action'=>'logout'));?></li>
 	</ul>
 	<?php endif; ?>
   </div><!-- /.container-fluid -->

@@ -35,8 +35,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = array();
-
+	public $components = array('Paginator','Session');
 /**
  * Displays a view
  *
@@ -45,6 +44,7 @@ class PagesController extends AppController {
  *	or MissingViewException in debug mode.
  */
 	public function display() {
+		$this->loadModel('Event');
 		$path = func_get_args();
 
 		$count = count($path);
@@ -63,6 +63,9 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		$this->Event->recursive = 0;
+		$this->set('events', $this->Paginator->paginate('Event'));
 
 		try {
 			$this->render(implode('/', $path));
