@@ -15,6 +15,9 @@ class EventsController extends AppController {
  */
 	public $components = array('Paginator','Session');
 
+	public function beforeFilter() {
+		$this->Auth->allow('requestEvent');
+	}
 /**
  * index method
  *
@@ -100,5 +103,12 @@ class EventsController extends AppController {
 			$this->Session->setFlash(__('The event has not been deleted.','default'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function requestEvent(){
+		$event_requests = ClassRegistry::init('event_requests');
+		if($this->request->is('POST')){
+			$event_requests->save($this->request->data);
+		}
 	}
 }
