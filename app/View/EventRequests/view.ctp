@@ -25,5 +25,6 @@
 		<li><?php echo $this->Form->postLink(__('Delete Event Request'), array('action' => 'delete', $eventRequest['EventRequest']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $eventRequest['EventRequest']['id']))); ?> </li>
 		<li><?php echo $this->Html->link(__('List Event Requests'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Event Request'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Approve Event Request'), array('action' => 'approve', $eventRequest['EventRequest']['id'])); ?> </li>
 	</ul>
 </div>
