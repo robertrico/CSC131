@@ -3,7 +3,6 @@
 	<fieldset>
 		<legend><?php echo __('Request for Event'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
 		echo $this->Form->input('time');
 		echo $this->Form->input('details');
 	?>
