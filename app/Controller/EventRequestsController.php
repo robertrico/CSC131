@@ -57,6 +57,24 @@ class EventRequestsController extends AppController {
 		}
 	}
 
+	public function approve($id = null) {
+		$this->loadModel('Event');
+		debug($this->Event->find('all'));
+		$options = array('conditions' => array('EventRequest.' . $this->EventRequest->primaryKey => $id));
+		$this->set('eventRequest', $this->EventRequest->find('first', $options));
+		if ($this->request->is('post')) {
+			$this->request->data['Event'] = $this->request->data['EventRequest'];
+			unset($this->request->data['EventRequest']);
+			$this->Event->create();
+			if ($this->Event->save($this->request->data)) {
+				$this->Flash->success(__('The event request has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Flash->error(__('The event request could not be saved. Please, try again.'));
+			}
+		}
+	}
+
 /**
  * edit method
  *
