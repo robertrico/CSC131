@@ -59,7 +59,6 @@ class EventRequestsController extends AppController {
 
 	public function approve($id = null) {
 		$this->loadModel('Event');
-		debug($this->Event->find('all'));
 		$options = array('conditions' => array('EventRequest.' . $this->EventRequest->primaryKey => $id));
 		$this->set('eventRequest', $this->EventRequest->find('first', $options));
 		if ($this->request->is('post')) {
