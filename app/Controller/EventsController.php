@@ -104,11 +104,4 @@ class EventsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
-
-	public function requestEvent(){
-		$event_requests = ClassRegistry::init('event_requests');
-		if($this->request->is('POST')){
-			$event_requests->save($this->request->data);
-		}
-	}
 }
