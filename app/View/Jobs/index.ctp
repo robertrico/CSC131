@@ -7,6 +7,9 @@
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('details'); ?></th>
 			<th><?php echo $this->Paginator->sort('event_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('available_positions'); ?></th>
+			<th><?php echo $this->Paginator->sort('start_time'); ?></th>
+			<th><?php echo $this->Paginator->sort('end_time'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -19,6 +22,9 @@
 		<td>
 			<?php echo $this->Html->link($job['Event']['name'], array('controller' => 'events', 'action' => 'view', $job['Event']['id'])); ?>
 		</td>
+		<td><?php echo h($job['Job']['available_positions']); ?>&nbsp;</td>
+		<td><?php echo h($job['Job']['start_time']); ?>&nbsp;</td>
+		<td><?php echo h($job['Job']['end_time']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $job['Job']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $job['Job']['id'])); ?>

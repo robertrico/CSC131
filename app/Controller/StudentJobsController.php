@@ -13,7 +13,7 @@ class StudentJobsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Flash','Session');
 
 /**
  * index method
@@ -45,9 +45,13 @@ class StudentJobsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($event_id=null) {
 		if ($this->request->is('post')) {
 			$this->StudentJob->create();
+
+			$this->request->data['StudentJob']['event_id'] = $event_id;
+			$this->request->data['StudentJob']['user_id'] = $this->Session->read('Auth.User.id');
+
 			if ($this->StudentJob->save($this->request->data)) {
 				$this->Flash->success(__('The student job has been saved.'));
 				return $this->redirect(array('action' => 'index'));
@@ -55,10 +59,9 @@ class StudentJobsController extends AppController {
 				$this->Flash->error(__('The student job could not be saved. Please, try again.'));
 			}
 		}
-		$events = $this->StudentJob->Event->find('list');
-		$users = $this->StudentJob->User->find('list');
+		$event = $this->StudentJob->Event->findById($event_id);
 		$jobs = $this->StudentJob->Job->find('list');
-		$this->set(compact('events', 'users', 'jobs'));
+		$this->set(compact('event', 'users', 'jobs'));
 	}
 
 /**

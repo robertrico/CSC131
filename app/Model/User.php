@@ -65,4 +65,13 @@ class User extends AppModel {
 		return true;
 	}
 
+	public function getFullName($uid=null){
+		$this->id = $uid;
+		$options = array(
+			'fields'=>array('User.firstname','User.lastname')
+		);
+		$name = $this->findById($uid);
+		return $name['User']['firstname']." ".$name['User']['lastname'];
+	}
+
 }

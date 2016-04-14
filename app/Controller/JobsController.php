@@ -13,7 +13,7 @@ class JobsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Flash');
 
 /**
  * index method
@@ -45,8 +45,9 @@ class JobsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($event_id = null) {
 		if ($this->request->is('post')) {
+			$this->request->data['Job']['event_id'] = $event_id;
 			$this->Job->create();
 			if ($this->Job->save($this->request->data)) {
 				$this->Flash->success(__('The job has been saved.'));

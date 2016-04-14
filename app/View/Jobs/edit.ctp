@@ -7,6 +7,9 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('details');
 		echo $this->Form->input('event_id');
+		echo $this->Form->input('available_positions');
+		echo $this->Form->input('start_time');
+		echo $this->Form->input('end_time');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

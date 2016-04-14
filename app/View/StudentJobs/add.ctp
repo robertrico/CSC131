@@ -3,8 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Student Job'); ?></legend>
 	<?php
-		echo $this->Form->input('event_id');
-		echo $this->Form->input('user_id');
+		echo $event['Event']['name'];
 		echo $this->Form->input('job_id');
 	?>
 	</fieldset>

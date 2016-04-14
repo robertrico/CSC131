@@ -21,6 +21,21 @@
 			<?php echo $this->Html->link($job['Event']['name'], array('controller' => 'events', 'action' => 'view', $job['Event']['id'])); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Available Positions'); ?></dt>
+		<dd>
+			<?php echo h($job['Job']['available_positions']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Start Time'); ?></dt>
+		<dd>
+			<?php echo h($job['Job']['start_time']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('End Time'); ?></dt>
+		<dd>
+			<?php echo h($job['Job']['end_time']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
