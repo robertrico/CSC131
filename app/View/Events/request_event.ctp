@@ -1,11 +1,10 @@
 <div class="events form">
-<?php echo $this->Form->create('Event'); ?>
+<?php echo $this->Form->create('event_requests'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Event'); ?></legend>
+		<legend><?php echo __('Request for Event'); ?></legend>
 	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('details');
 		echo $this->Form->input('time');
+		echo $this->Form->input('details');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

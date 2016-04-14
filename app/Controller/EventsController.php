@@ -13,8 +13,13 @@ class EventsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator','Session');
+	public $components = array('Paginator');
 
+
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->loadModel('User');
+	}
 /**
  * index method
  *
@@ -37,7 +42,20 @@ class EventsController extends AppController {
 			throw new NotFoundException(__('Invalid event'));
 		}
 		$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
-		$this->set('event', $this->Event->find('first', $options));
+		$event = $this->Event->find('first', $options);
+		$student_jobs = array();
+		foreach($event['StudentJob'] as $student_job){
+			$this->Event->Job->id = $student_job['job_id'];
+			$job = array();
+			$job['user'] = array('id'=>$student_job['user_id'], 'name'=>$this->User->getFullName($student_job['user_id']));
+			$job['job'] = array('id'=>$this->Event->Job->id,'name'=>$this->Event->Job->field('name'));
+			$job['start'] = date('h:m',strtotime($this->Event->Job->field('start_time')));
+			$job['end'] = date('h:m',strtotime($this->Event->Job->field('end_time')));
+			$job['hours'] = date($job['end']) - date($job['start']);
+			$student_jobs[] = $job;
+		}
+
+		$this->set(compact('event','student_jobs'));
 	}
 
 /**
@@ -49,10 +67,10 @@ class EventsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash(__('The event has been saved.','default'));
+				$this->Flash->success(__('The event has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The event could not be saved. Please, try again.','default'));
+				$this->Flash->error(__('The event could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -70,10 +88,10 @@ class EventsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash(__('The event has been saved.','default'));
+				$this->Flash->success(__('The event has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The event has not been saved.','default'));
+				$this->Flash->error(__('The event could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
@@ -95,9 +113,9 @@ class EventsController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Event->delete()) {
-			$this->Session->setFlash(__('The event has been deleted.','default'));
+			$this->Flash->success(__('The event has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The event has not been deleted.','default'));
+			$this->Flash->error(__('The event could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
