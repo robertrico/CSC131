@@ -1,12 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Event Model
+ * Hour Model
  *
- * @property Job $Job
- * @property StudentJob $StudentJob
+ * @property User $User
+ * @property StudentInfo $StudentInfo
  */
-class Event extends AppModel {
+class Hour extends AppModel {
 
 /**
  * Validation rules
@@ -14,9 +14,9 @@ class Event extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'name' => array(
-			'notBlank' => array(
-				'rule' => array('notBlank'),
+		'user_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -29,27 +29,29 @@ class Event extends AppModel {
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+/**
  * hasMany associations
  *
  * @var array
  */
 	public $hasMany = array(
-		'Job' => array(
-			'className' => 'Job',
-			'foreignKey' => 'event_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'StudentJob' => array(
-			'className' => 'StudentJob',
-			'foreignKey' => 'event_id',
+		'StudentInfo' => array(
+			'className' => 'StudentInfo',
+			'foreignKey' => 'hour_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
