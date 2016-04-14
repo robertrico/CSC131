@@ -1,12 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Event Model
+ * Job Model
  *
- * @property Job $Job
- * @property StudentJob $StudentJob
+ * @property Event $Event
  */
-class Event extends AppModel {
+class Job extends AppModel {
 
 /**
  * Validation rules
@@ -29,37 +28,17 @@ class Event extends AppModel {
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasMany associations
+ * belongsTo associations
  *
  * @var array
  */
-	public $hasMany = array(
-		'Job' => array(
-			'className' => 'Job',
+	public $belongsTo = array(
+		'Event' => array(
+			'className' => 'Event',
 			'foreignKey' => 'event_id',
-			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'StudentJob' => array(
-			'className' => 'StudentJob',
-			'foreignKey' => 'event_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'order' => ''
 		)
 	);
-
 }

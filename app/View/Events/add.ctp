@@ -4,8 +4,8 @@
 		<legend><?php echo __('Add Event'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
-		echo $this->Form->input('time');
 		echo $this->Form->input('details');
+		echo $this->Form->input('time');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
