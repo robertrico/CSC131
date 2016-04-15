@@ -44,6 +44,7 @@ class EventsController extends AppController {
 		$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
 		$event = $this->Event->find('first', $options);
 		$student_jobs = array();
+		$jobs = $event['Job'];
 		foreach($event['StudentJob'] as $student_job){
 			$this->Event->Job->id = $student_job['job_id'];
 			$job = array();
@@ -55,7 +56,7 @@ class EventsController extends AppController {
 			$student_jobs[] = $job;
 		}
 
-		$this->set(compact('event','student_jobs'));
+		$this->set(compact('event','student_jobs', 'jobs'));
 	}
 
 /**
