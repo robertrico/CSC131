@@ -47,6 +47,7 @@ class EventsController extends AppController {
 		$jobs = $event['Job'];
 		foreach($event['StudentJob'] as $student_job){
 			$this->Event->Job->id = $student_job['job_id'];
+			
 			$job = array();
 			$job['user'] = array('id'=>$student_job['user_id'], 'name'=>$this->User->getFullName($student_job['user_id']));
 			$job['job'] = array('id'=>$this->Event->Job->id,'name'=>$this->Event->Job->field('name'));
