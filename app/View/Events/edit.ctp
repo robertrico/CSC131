@@ -7,6 +7,8 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('details');
 		echo $this->Form->input('time');
+		echo $this->Form->input('semester',array('options'=>$semesters));
+		echo $this->Form->input('year',array('type'=>'number','max'=>9999,'value'=>date('Y')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

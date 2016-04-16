@@ -15,6 +15,11 @@ class StudentJobsController extends AppController {
  */
 	public $components = array('Paginator','Flash','Session');
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->loadModel('Hour');
+	}
+
 /**
  * index method
  *
@@ -23,6 +28,10 @@ class StudentJobsController extends AppController {
 	public function index() {
 		$this->StudentJob->recursive = 0;
 		$this->set('studentJobs', $this->Paginator->paginate());
+	}
+
+	public function myEvents() {
+		$this->set('studentJobs', $this->Paginator->paginate('StudentJob',array('user_id'=>$this->Session->read('Auth.User.id'))));
 	}
 
 /**
@@ -46,7 +55,11 @@ class StudentJobsController extends AppController {
  * @return void
  */
 	public function add($event_id=null) {
+		$event = $this->StudentJob->Event->findById($event_id);
+		$jobs = Set::combine($event['Job'],'{n}.id','{n}.name');;
+
 		if ($this->request->is('post')) {
+			$this->Hour->addHour($this->request->data,$event);
 			$this->StudentJob->create();
 
 			$this->request->data['StudentJob']['event_id'] = $event_id;
@@ -62,8 +75,6 @@ class StudentJobsController extends AppController {
 				$this->Flash->error(__('The student job could not be saved. Please, try again.'));
 			}
 		}
-		$event = $this->StudentJob->Event->findById($event_id);
-		$jobs = $this->StudentJob->Job->find('list');
 		$this->set(compact('event', 'users', 'jobs'));
 	}
 

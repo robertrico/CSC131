@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Student Job'); ?></legend>
 	<?php
 		echo $event['Event']['name'];
-		echo $this->Form->input('job_id');
+		echo $this->Form->input('job_id',array('options'=>$jobs));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -13,12 +13,13 @@ class EventsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Flash','Session');
 
 
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->loadModel('User');
+		$this->set('semesters',$this->semesters);
 	}
 /**
  * index method
@@ -29,6 +30,7 @@ class EventsController extends AppController {
 		$this->Event->recursive = 0;
 		$this->set('events', $this->Paginator->paginate());
 	}
+
 
 /**
  * view method
@@ -120,5 +122,11 @@ class EventsController extends AppController {
 			$this->Flash->error(__('The event could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function generateReport() {
+		if ($this->request->is(array('post', 'put'))) {
+			debug($this->request->data);die;
+		}
 	}
 }
