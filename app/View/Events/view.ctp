@@ -21,6 +21,16 @@
 			<?php echo h($event['Event']['details']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Semester'); ?></dt>
+		<dd>
+			<?php echo h($event['Event']['semester']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Year'); ?></dt>
+		<dd>
+			<?php echo h($event['Event']['year']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <!-- start event jobs table -->

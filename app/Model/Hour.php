@@ -63,5 +63,38 @@ class Hour extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+	public function addHour($data=null,$event=null){
+		$options = array(
+			'conditions'=>array(
+				'user_id' => CakeSession::read('Auth.User.id'),
+				'semester'=>$event['Event']['semester'],
+				'year'=>$event['Event']['year']
+			)
+		);
+		$current = $this->find('first',$options);
+		$cur_job = array();
+		foreach($event['Job'] as $job){
+			if($job['id'] == $data['StudentJob']['job_id']){
+				$cur_job = $job;
+				break;
+			}
+		}
+		$hours = array();
+		if(empty($current)){
+			$hours = array(
+				'user_id' => CakeSession::read('Auth.User.id'),
+				'semester'=>$event['Event']['semester'],
+				'year'=>$event['Event']['year'],
+				'total_hours' => $cur_job['end_time'] - $cur_job['start_time']
+			);
+		}else{
+			$hours = $current['Hour'];
+			$hours['total_hours'] += $cur_job['end_time'] - $cur_job['start_time'];
+		}
+		return $this->save($hours);
+
+
+	}
 
 }
