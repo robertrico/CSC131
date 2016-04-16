@@ -21,8 +21,41 @@
 			<?php echo h($event['Event']['details']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Semester'); ?></dt>
+		<dd>
+			<?php echo h($event['Event']['semester']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Year'); ?></dt>
+		<dd>
+			<?php echo h($event['Event']['year']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
+<!-- start event jobs table -->
+	<table class="table table-striped" cellpadding="0" cellspacing="0">
+	<thead>
+	<tr>
+			<th><?php echo (__('Job Name')); ?></th>
+			<th><?php echo (__('Positions left')); ?></th>
+			<th><?php echo (__('Start time')); ?></th>
+			<th><?php echo (__('End time')); ?></th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach($jobs as $event_job) : ?>
+		<tr>
+			<td><?php echo $this->Html->link(__(h($event_job['name'])), array('controller'=>'jobs','action' => 'view', $event_job['id']),array('target'=>'_blank')); ?> </td>
+			<td><?php echo h($event_job['available_positions']); ?>&nbsp;</td>
+			<td><?php echo h($event_job['start_time']); ?>&nbsp;</td>
+			<td><?php echo h($event_job['end_time']); ?>&nbsp;</td>
+		</tr>
+	<?php endforeach; ?>
+	</tbody>
+	</table>
+
+<!-- start student jobs table -->
 	<table class="table table-striped" cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
@@ -43,6 +76,7 @@
 	<?php endforeach; ?>
 	</tbody>
 	</table>
+
 <div class="actions">
 	<h3><?php echo __('Student Actions'); ?></h3>
 	<ul>

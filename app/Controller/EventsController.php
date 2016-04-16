@@ -13,12 +13,13 @@ class EventsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Flash','Session');
 
 
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->loadModel('User');
+		$this->set('semesters',$this->semesters);
 	}
 /**
  * index method
@@ -29,6 +30,7 @@ class EventsController extends AppController {
 		$this->Event->recursive = 0;
 		$this->set('events', $this->Paginator->paginate());
 	}
+
 
 /**
  * view method
@@ -44,8 +46,10 @@ class EventsController extends AppController {
 		$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
 		$event = $this->Event->find('first', $options);
 		$student_jobs = array();
+		$jobs = $event['Job'];
 		foreach($event['StudentJob'] as $student_job){
 			$this->Event->Job->id = $student_job['job_id'];
+			
 			$job = array();
 			$job['user'] = array('id'=>$student_job['user_id'], 'name'=>$this->User->getFullName($student_job['user_id']));
 			$job['job'] = array('id'=>$this->Event->Job->id,'name'=>$this->Event->Job->field('name'));
@@ -55,7 +59,7 @@ class EventsController extends AppController {
 			$student_jobs[] = $job;
 		}
 
-		$this->set(compact('event','student_jobs'));
+		$this->set(compact('event','student_jobs', 'jobs'));
 	}
 
 /**
@@ -118,5 +122,11 @@ class EventsController extends AppController {
 			$this->Flash->error(__('The event could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function generateReport() {
+		if ($this->request->is(array('post', 'put'))) {
+			debug($this->request->data);die;
+		}
 	}
 }
