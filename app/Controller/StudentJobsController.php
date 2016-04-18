@@ -70,7 +70,7 @@ class StudentJobsController extends AppController {
 				$job = $this->StudentJob->Job->findById($this->request->data['StudentJob']['job_id']);	
 				$job['Job']['available_positions']--;
 				$this->StudentJob->Job->save($job);
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect('/myEvents');
 			} else {
 				$this->Flash->error(__('The student job could not be saved. Please, try again.'));
 			}
