@@ -69,6 +69,7 @@ class EventsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$this->request->data['Event']['time'] = date("Y-m-d H:i:s",strtotime($this->request->data['Event']['time']));
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
 				$this->Flash->success(__('The event has been saved.'));
@@ -124,9 +125,56 @@ class EventsController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function generateReport() {
-		if ($this->request->is(array('post', 'put'))) {
-			debug($this->request->data);die;
+	public function generateReport($event_id=null) {
+		$this->autoRender = false;
+
+		$event_options = array(
+				'conditions' => array(
+					'Event.id' => $event_id
+				)
+			);
+
+
+		$data = ClassRegistry::init('Event')->find('first',$event_options); 
+		$event = $data['Event'];
+		$jobs = Hash::combine($data['Job'], '{n}.id', '{n}');
+		$users = Hash::combine($data['StudentJob'], '{n}.user_id', '{n}');
+		$attached_users = array();
+		unset($data);
+
+		foreach($users as $index => $job){
+			$attached_users[] = $index;
 		}
+
+		$s_options = array(
+			'conditions' => array(
+				'id' => $attached_users
+			)
+		);
+
+		$i_options = array(
+			'conditions' => array(
+				'StudentInfo.user_id' => $attached_users
+			)
+		);
+
+		$students = ClassRegistry::init('User')->find('all',$s_options); 
+		$students_info = ClassRegistry::init('StudentInfo')->find('all',$i_options); 
+		unset($attached_users);
+		$students = Hash::combine($students, '{n}.User.id', '{n}');
+
+		debug($students_info);
+		debug($event);
+		debug($jobs);
+		debug($students);
+		debug($users);
+		$csv = array();
+		$csv[] = array('StudentId','Name','Hours');
+		foreach($users as $id => $field){
+			$csv[] = array($students[$id]['User']);
+		}
+
+
+		die;
 	}
 }
