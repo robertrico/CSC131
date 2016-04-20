@@ -1,33 +1,34 @@
 
 
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-6 col-md-offset-2 text-center">
 	<div class="main-panel panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title" text-center>Create A New User</h3>
+		<div class="panel-heading text-center">
+			<div>
+				<h3 class="panel-title" >Create A New User</h3>
+			</div>
 		</div>
-		<div class="panel-body">
-<div class="users form" >
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Add a New User'); ?></legend>
-	<?php
-		echo $this->Form->input('First Name',array("class"=>"form-control"));
-		echo $this->Form->input('last name',array("class"=>"form-control"));
-		echo $this->Form->input('email',array("class"=>"form-control"));
-		echo $this->Form->input('username',array("class"=>"form-control"));
-		echo $this->Form->input('password',array("class"=>"form-control"));
-
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-	</ul>
-</div>		</div>
+			<div class="panel-body">
+				<div class="users form" >
+					<?php echo $this->Form->create('User'); ?>
+					<fieldset>
+						<?php
+							echo $this->Form->input('firstName',array("class"=>"form-control", "label"=>"First Name",'required'));
+							echo $this->Form->input('lastname',array("class"=>"form-control", "label"=>"Last Name",'required'));
+							echo $this->Form->input('id',array("class"=>"form-control", "label"=>"Student Id",'required'));
+							echo $this->Form->input('email',array("class"=>"form-control", "label"=>"Email",'required'));
+							echo $this->Form->input('major',array("class"=>"form-control", "label"=>"Major" ,'required'));
+							echo $this->Form->input('username',array("class"=>"form-control", "label"=>"Userame",'required'));
+							echo $this->Form->input('password',array("class"=>"form-control", "label"=>"Password",'required'));
+						?>
+					</fieldset>
+					<h1></h1>
+					<div class="col-md-6 col-md-offset-3">
+						<?php //echo $this->Form->button(__('Clear'), array('class'=>'btn btn-default pull-left'));?>
+						<?php echo $this->Form->submit(__('Submit'), array('class'=>'btn btn-default pull-center'));?>
+					</div>
+					<?php echo $this->Form->end(); ?>
+				</div>
+			</div>
 	</div>
 </div>
