@@ -64,13 +64,13 @@
 				<?php foreach($myjobs as $job): ?>
 					<tr>
 						<td>
-							<?php echo $job['Event']['name']; ?>
+							<?php echo $this->Html->link(__($job['Event']['name']), array('controller'=>'events','action' => 'view', $job['Event']['id'])); ?>
 						</td>
 						<td>
 							<?php echo date("m-d-Y",strtotime($job['Event']['time'])); ?>
 						</td>
 						<td>
-							<?php echo $job['Job']['name']; ?>
+							<?php echo $this->Html->link(__($job['Job']['name']), array('controller'=>'jobs','action' => 'view', $job['Job']['id'])); ?>
 						</td>
 						<td>
 							<?php echo $job['Job']['end_time'] - $job['Job']['start_time']; ?>

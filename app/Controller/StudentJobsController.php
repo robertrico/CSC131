@@ -56,18 +56,20 @@ class StudentJobsController extends AppController {
  */
 	public function add($event_id=null) {
 		$event = $this->StudentJob->Event->findById($event_id);
-		$jobs = Set::combine($event['Job'],'{n}.id','{n}.name');;
+		$jobs = Set::combine($event['Job'],'{n}.id','{n}.name');
 
 		if ($this->request->is('post')) {
+			$job = $this->StudentJob->Job->findById($this->request->data['StudentJob']['job_id']);	
 			$this->Hour->addHour($this->request->data,$event);
 			$this->StudentJob->create();
 
 			$this->request->data['StudentJob']['event_id'] = $event_id;
 			$this->request->data['StudentJob']['user_id'] = $this->Session->read('Auth.User.id');
+			$this->request->data['StudentJob']['total_hours'] = $job['Job']['end_time']-$job['Job']['start_time'];
+
 			if ($this->StudentJob->save($this->request->data)) {
 				$this->Flash->success(__('The student job has been saved.'));
 				$this->StudentJob->Job->recursive = -1;
-				$job = $this->StudentJob->Job->findById($this->request->data['StudentJob']['job_id']);	
 				$job['Job']['available_positions']--;
 				$this->StudentJob->Job->save($job);
 				return $this->redirect('/myEvents');
