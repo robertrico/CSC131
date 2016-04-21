@@ -4,7 +4,6 @@
 			<h3 class="panel-title">Welcome to the Community Service Connection!</h3>
 		</div>
 		<div class="panel-body">
-			<h3>Welcome to the MEP Community Service Connection!</h3>
 			<p> With this platform, we make it easy for you to keep track of your hours and view the community service events you have attended! </p>
 		</div>
 	</div>
