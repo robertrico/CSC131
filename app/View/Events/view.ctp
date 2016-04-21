@@ -86,6 +86,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Add Job to Event'), array('controller'=>'jobs','action' => 'add', $event['Event']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('Edit Event'), array('action' => 'edit', $event['Event']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Generate Hours Report'), array('action' => 'generateReport', $event['Event']['id'])); ?> </li>
 		<li><?php echo $this->Form->postLink(__('Delete Event'), array('action' => 'delete', $event['Event']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $event['Event']['id']))); ?> </li>
 	</ul>
 </div>

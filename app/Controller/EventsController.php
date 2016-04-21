@@ -69,6 +69,7 @@ class EventsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$this->request->data['Event']['time'] = date("Y-m-d H:i:s",strtotime($this->request->data['Event']['time']));
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
 				$this->Flash->success(__('The event has been saved.'));
@@ -124,9 +125,58 @@ class EventsController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function generateReport() {
-		if ($this->request->is(array('post', 'put'))) {
-			debug($this->request->data);die;
+	public function generateReport($event_id=null) {
+		$this->autoRender = false;
+
+		$event_options = array(
+				'conditions' => array(
+					'Event.id' => $event_id
+				)
+			);
+
+
+		$data = ClassRegistry::init('Event')->find('first',$event_options); 
+		$event = $data['Event'];
+		$jobs = Hash::combine($data['Job'], '{n}.id', '{n}');
+		$users = Hash::combine($data['StudentJob'], '{n}.user_id', '{n}');
+		$attached_users = array();
+		unset($data);
+
+		foreach($users as $index => $job){
+			$attached_users[] = $index;
 		}
+
+		$s_options = array(
+			'conditions' => array(
+				'User.id' => $attached_users
+			)
+		);
+
+		$students_info = ClassRegistry::init('StudentInfo')->find('all',$s_options); 
+		$students_info = Hash::combine($students_info, '{n}.User.id', '{n}');
+		unset($attached_users);
+
+		$csv = array();
+
+		$header_row = array('StudentId','Name','Event','Hours');
+		$csv_file = fopen('php://output', 'w');
+
+		header('Content-type: application/csv');
+		header('Content-Disposition: attachment; filename="'.$event['name'].'.csv"');
+
+		fputcsv($csv_file,$header_row,',','"');
+
+		foreach($users as $id => $field) {
+			$row = array(
+				$students_info[$id]['StudentInfo']['studentid'],
+				$students_info[$id]['User']['firstname'].' '.$students_info[$id]['User']['lastname'],
+				$event['name'],
+				$field['total_hours']
+			);
+
+			fputcsv($csv_file,$row,',','"');
+		}
+		fclose($csv_file);
+		exit(1);
 	}
 }

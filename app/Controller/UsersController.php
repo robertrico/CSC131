@@ -73,10 +73,20 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($student=false) {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
+				if($student){
+					$this->loadModel('StudentInfo');
+					$info = array();
+					$info['StudentInfo'] = array(
+						'studentid'=>$this->request->data['User']['studentid'],
+						'user_id'=>$this->User->getLastInsertId(),
+						'major'=>$this->request->data['User']['studentid']
+					);
+					$this->StudentInfo->save($info);
+				}
 				$this->Session->setFlash(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {

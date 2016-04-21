@@ -47,7 +47,11 @@ class JobsController extends AppController {
  */
 	public function add($event_id = null) {
 		if ($this->request->is('post')) {
+			$this->request->data['Job']['start_time'] = date('H:i:s',strtotime($this->request->data['Job']['start_time']));
+			$this->request->data['Job']['end_time'] = date('H:i:s',strtotime($this->request->data['Job']['end_time']));
+
 			$this->request->data['Job']['event_id'] = $event_id;
+
 			$this->Job->create();
 			if ($this->Job->save($this->request->data)) {
 				$this->Flash->success(__('The job has been saved.'));
@@ -56,8 +60,8 @@ class JobsController extends AppController {
 				$this->Flash->error(__('The job could not be saved. Please, try again.'));
 			}
 		}
-		$events = $this->Job->Event->find('list');
-		$this->set(compact('events'));
+		$event = $this->Job->Event->findById($event_id);
+		$this->set(compact('event'));
 	}
 
 /**
