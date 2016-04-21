@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 
 <div class="col-md-10 col-md-offset-1">
+=======
+<div class="col-md-8 col-md-offset-1">
+>>>>>>> 755b95205cc3167099cb9e083f2a54dacff8a49d
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading text-center">
 			<div>
