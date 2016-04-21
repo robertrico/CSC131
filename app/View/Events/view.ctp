@@ -35,8 +35,7 @@
 	<tr>
 			<th><?php echo (__('Job Name')); ?></th>
 			<th><?php echo (__('Positions left')); ?></th>
-			<th><?php echo (__('Start time')); ?></th>
-			<th><?php echo (__('End time')); ?></th>
+			<th><?php echo (__('Time')); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -44,8 +43,7 @@
 		<tr>
 			<td><?php echo $this->Html->link(__(h($event_job['name'])), array('controller'=>'jobs','action' => 'view', $event_job['id']),array('target'=>'_blank')); ?> </td>
 			<td><?php echo h($event_job['available_positions']); ?>&nbsp;</td>
-			<td><?php echo h($event_job['start_time']); ?>&nbsp;</td>
-			<td><?php echo h($event_job['end_time']); ?>&nbsp;</td>
+			<td><?php echo date('g:i a', strtotime(h($event_job['start_time']))).' - '.date('g:i a', strtotime(h($event_job['end_time']))); ?>&nbsp;</td>
 		</tr>
 	<?php endforeach; ?>
 	</tbody>
