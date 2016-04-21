@@ -32,6 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $semesters = array('Fall'=>'Fall','Spring'=>'Spring');
+	public $years = array();
 	public $components = array(
 		'DebugKit.Toolbar',
         'Auth' => array(
@@ -47,6 +48,11 @@ class AppController extends Controller {
         )
     );
     public function beforeFilter() {
+		for($i = 2016; $i < 2050; $i++){
+			$this->years[] = $i;	
+		}
+		$this->set('semesters',$this->semesters);
+		$this->set('years',$this->years);
         //$this->Auth->allow('index', 'view');
     }
 
