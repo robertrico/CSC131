@@ -148,33 +148,35 @@ class EventsController extends AppController {
 
 		$s_options = array(
 			'conditions' => array(
-				'id' => $attached_users
+				'User.id' => $attached_users
 			)
 		);
 
-		$i_options = array(
-			'conditions' => array(
-				'StudentInfo.user_id' => $attached_users
-			)
-		);
-
-		$students = ClassRegistry::init('User')->find('all',$s_options); 
-		$students_info = ClassRegistry::init('StudentInfo')->find('all',$i_options); 
+		$students_info = ClassRegistry::init('StudentInfo')->find('all',$s_options); 
+		$students_info = Hash::combine($students_info, '{n}.User.id', '{n}');
 		unset($attached_users);
-		$students = Hash::combine($students, '{n}.User.id', '{n}');
 
-		debug($students_info);
-		debug($event);
-		debug($jobs);
-		debug($students);
-		debug($users);
 		$csv = array();
-		$csv[] = array('StudentId','Name','Hours');
-		foreach($users as $id => $field){
-			$csv[] = array($students[$id]['User']);
+
+		$header_row = array('StudentId','Name','Event','Hours');
+		$csv_file = fopen('php://output', 'w');
+
+		header('Content-type: application/csv');
+		header('Content-Disposition: attachment; filename="'.$event['name'].'.csv"');
+
+		fputcsv($csv_file,$header_row,',','"');
+
+		foreach($users as $id => $field) {
+			$row = array(
+				$students_info[$id]['StudentInfo']['studentid'],
+				$students_info[$id]['User']['firstname'].' '.$students_info[$id]['User']['lastname'],
+				$event['name'],
+				$field['total_hours']
+			);
+
+			fputcsv($csv_file,$row,',','"');
 		}
-
-
-		die;
+		fclose($csv_file);
+		exit(1);
 	}
 }
