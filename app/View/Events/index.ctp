@@ -9,24 +9,18 @@
 				<table class="table table-striped" cellpadding="0" cellspacing="0">
 				<thead>
 				<tr>
-						<th><?php echo $this->Paginator->sort('ID#'); ?></th>
 						<th><?php echo $this->Paginator->sort('name'); ?></th>
 						<th><?php echo $this->Paginator->sort('details'); ?></th>
 						<th><?php echo $this->Paginator->sort('time'); ?></th>
-						<th class="actions"><?php echo __('Actions'); ?></th>
 				</tr>
 				</thead>
 				<tbody>
 				<?php foreach ($events as $event): ?>
 				<tr>
-					<td><?php echo h($event['Event']['id']); ?>&nbsp;</td>
-					<td><?php echo h($event['Event']['name']); ?>&nbsp;</td>
+					<td><?php echo $this->Html->link(__(h($event['Event']['name'])), array('action' => 'view', $event['Event']['id'])); ?>&nbsp;</td>
 					<td><?php echo h($event['Event']['details']); ?>&nbsp;</td>
 					<td><?php echo h($event['Event']['time']); ?>&nbsp;</td>
 					<td class="actions">
-						<?php echo $this->Html->link(__('View'), array('action' => 'view', $event['Event']['id'])); ?>
-						<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $event['Event']['id'])); ?>
-						<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $event['Event']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $event['Event']['id']))); ?>
 					</td>
 				</tr>
 			<?php endforeach; ?>
