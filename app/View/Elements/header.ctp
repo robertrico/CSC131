@@ -28,6 +28,7 @@
 				<li><?php echo $this->Html->link('All Events',array('controller'=>'events','action'=>'index'));?></li>
 				<li role="separator" class="divider"></li>
 				<li><?php echo $this->Html->link('Add Event',array('controller'=>'events','action'=>'add'));?></li>
+				<li><?php echo $this->Html->link('Add Student',array('controller'=>'users','action'=>'add',1));?></li>
 			</ul>
 		</li>
 		<li><?php echo $this->Html->link('Logout',array('controller'=>'users','action'=>'logout'));?></li>
