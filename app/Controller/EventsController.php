@@ -19,7 +19,6 @@ class EventsController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->loadModel('User');
-		$this->set('semesters',$this->semesters);
 	}
 /**
  * index method
