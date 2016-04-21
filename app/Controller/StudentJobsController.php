@@ -55,7 +55,14 @@ class StudentJobsController extends AppController {
  * @return void
  */
 	public function add($event_id=null) {
+		$this->loadModel('StudentInfo');
+		$student = $this->StudentInfo->findByUserId($this->Session->read('Auth.User.id'));
+		if(empty($student)){
+				$this->Session->setFlash(__('Your account type cannot sign up for events.'),'default',array('class'=>'alert alert-danger'));
+				return $this->redirect($this->referer());
+		}
 		$event = $this->StudentJob->Event->findById($event_id);
+		
 		$jobs = Set::combine($event['Job'],'{n}.id','{n}.name');
 
 		if ($this->request->is('post')) {
