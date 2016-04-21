@@ -1,4 +1,3 @@
-
 <div class="col-md-7 col-md-offset-3 text-center">
 	<div class="login-panel panel panel-default">
 		<div class="panel-heading">
