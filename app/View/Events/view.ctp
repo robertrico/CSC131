@@ -1,39 +1,35 @@
-<div class="events view">
-<h2><?php echo __('Event'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($event['Event']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($event['Event']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Time'); ?></dt>
-		<dd>
-			<?php echo h($event['Event']['time']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Details'); ?></dt>
-		<dd>
-			<?php echo h($event['Event']['details']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Semester'); ?></dt>
-		<dd>
-			<?php echo h($event['Event']['semester']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Year'); ?></dt>
-		<dd>
-			<?php echo h($event['Event']['year']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<!-- start event jobs table -->
+<div class="col-md-12 col-md-offset-0">
+	<div class="main-panel panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Event Information</h3>
+		</div>
+		<div class="panel-body">
+							<div class="events view">
+				<h2><?php echo __('Event Information for ' . $event['Event']['name']); ?></h2>
+					<dl>
+						<dt><?php echo __('ID#'); ?></dt>
+						<dd>
+							<?php echo h($event['Event']['id']); ?>
+							&nbsp;
+						</dd>
+						<dt><?php echo __('Name'); ?></dt>
+						<dd>
+							<?php echo h($event['Event']['name']); ?>
+							&nbsp;
+						</dd>
+						<dt><?php echo __('Time'); ?></dt>
+						<dd>
+							<?php echo h($event['Event']['time']); ?>
+							&nbsp;
+						</dd>
+						<dt><?php echo __('Details'); ?></dt>
+						<dd>
+							<?php echo h($event['Event']['details']); ?>
+							&nbsp;
+						</dd>
+					</dl>
+				</div>
+				<!-- start event jobs table -->
 	<table class="table table-striped" cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
@@ -76,17 +72,20 @@
 	<?php endforeach; ?>
 	</tbody>
 	</table>
-
-<div class="actions">
+		<div class="actions">
 	<h3><?php echo __('Student Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Sign up for Event'), array('controller'=>'studentjobs','action' => 'add', $event['Event']['id'])); ?> </li>
-	</ul>
-	<h3><?php echo __('Faculty Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Add Job to Event'), array('controller'=>'jobs','action' => 'add', $event['Event']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Edit Event'), array('action' => 'edit', $event['Event']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Generate Hours Report'), array('action' => 'generateReport', $event['Event']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Event'), array('action' => 'delete', $event['Event']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $event['Event']['id']))); ?> </li>
-	</ul>
+		<ul>
+			<li><?php echo $this->Html->link(__('Sign up for Event'), array('controller'=>'studentjobs','action' => 'add', $event['Event']['id'])); ?> </li>
+		</ul>
+		<h3><?php echo __('Faculty Actions'); ?></h3>
+		<ul>
+			<li><?php echo $this->Html->link(__('Add Job to Event'), array('controller'=>'jobs','action' => 'add', $event['Event']['id'])); ?> </li>
+			<li><?php echo $this->Html->link(__('Edit Event'), array('action' => 'edit', $event['Event']['id'])); ?> </li>
+			<li><?php echo $this->Form->postLink(__('Delete Event'), array('action' => 'delete', $event['Event']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $event['Event']['id']))); ?> </li>
+		</ul>
+</div>
+		</div>
+
+	</div>
+
 </div>
