@@ -20,8 +20,6 @@
 					<td><?php echo $this->Html->link(__(h($event['Event']['name'])), array('action' => 'view', $event['Event']['id'])); ?>&nbsp;</td>
 					<td><?php echo h($event['Event']['details']); ?>&nbsp;</td>
 					<td><?php echo h($event['Event']['time']); ?>&nbsp;</td>
-					<td class="actions">
-					</td>
 				</tr>
 			<?php endforeach; ?>
 				</tbody>
