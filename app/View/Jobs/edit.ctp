@@ -20,8 +20,8 @@
 				</fieldset>
 			</div>
 			<div class="col-md-12 text-center">
-					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-primary pull-left')); ?>
-					<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-primary pull-right'));?>
+					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default pull-left')); ?>
+					<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-default pull-right'));?>
 				</div>
 			<div class="actions">
 				<h3><?php echo __('Actions'); ?></h3>
