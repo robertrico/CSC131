@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-12">
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Job Description</h3>
@@ -34,12 +34,12 @@
 					</dd>
 					<dt><?php echo __('Start Time'); ?></dt>
 					<dd>
-						<?php echo h($job['Job']['start_time']); ?>
+						<?php echo h(date('g:i a',strtotime($job['Job']['start_time']))); ?>
 						&nbsp;
 					</dd>
 					<dt><?php echo __('End Time'); ?></dt>
 					<dd>
-						<?php echo h($job['Job']['end_time']); ?>
+						<?php echo h(date('g:i a',strtotime($job['Job']['end_time']))); ?>
 						&nbsp;
 					</dd>
 				</dl>

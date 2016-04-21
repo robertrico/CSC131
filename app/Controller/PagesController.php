@@ -79,7 +79,7 @@ class PagesController extends AppController {
 
 		);
 		$sj_options = array(
-			'group' => 'Event.id',
+			'group' => 'Job.id',
 			'order'=>'Event.time ASC',
 			'conditions' => array(
 				'Event.time >= '=>date('Y-m-d'),
