@@ -54,7 +54,7 @@ class EventsController extends AppController {
 			$job['job'] = array('id'=>$this->Event->Job->id,'name'=>$this->Event->Job->field('name'));
 			$job['start'] = date('h:m',strtotime($this->Event->Job->field('start_time')));
 			$job['end'] = date('h:m',strtotime($this->Event->Job->field('end_time')));
-			$job['hours'] = date($job['end']) - date($job['start']);
+			$job['hours'] = $this->Event->Job->field('end_time') - $this->Event->Job->field('start_time');
 			$student_jobs[] = $job;
 		}
 
