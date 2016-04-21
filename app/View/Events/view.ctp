@@ -7,19 +7,24 @@
 							<div class="events view">
 				<h2><?php echo __('Event Information for ' . $event['Event']['name']); ?></h2>
 					<dl>
-						<dt><?php echo __('ID#'); ?></dt>
-						<dd>
-							<?php echo h($event['Event']['id']); ?>
-							&nbsp;
-						</dd>
 						<dt><?php echo __('Name'); ?></dt>
 						<dd>
 							<?php echo h($event['Event']['name']); ?>
 							&nbsp;
 						</dd>
-						<dt><?php echo __('Date/Time'); ?></dt>
+						<dt><?php echo __('Date'); ?></dt>
 						<dd>
-							<?php echo date('m/d/Y g:i a', strtotime(h($event['Event']['time']))); ?>
+							<?php echo date('m/d/Y', strtotime(h($event['Event']['date']))); ?>
+							&nbsp;
+						</dd>
+						<dt><?php echo __('Time'); ?></dt>
+						<dd>
+							<?php echo date('g:i a', strtotime(h($event['Event']['start_time']))).' - '.date('g:i a', strtotime(h($event['Event']['end_time']))); ?>
+							&nbsp;
+						</dd>
+						<dt><?php echo __('Location'); ?></dt>
+						<dd>
+							<?php echo h($event['Event']['location']); ?>
 							&nbsp;
 						</dd>
 						<dt><?php echo __('Details'); ?></dt>
