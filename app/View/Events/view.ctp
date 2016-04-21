@@ -64,7 +64,7 @@
 		<tr>
 			<td><?php echo $this->Html->link(__(h($student_job['user']['name'])), array('controller'=>'users','action' => 'view', $student_job['user']['id']),array('target'=>'_blank')); ?> </td>
 			<td><?php echo $this->Html->link(__(h($student_job['job']['name'])), array('controller'=>'jobs','action' => 'view', $student_job['job']['id']),array('target'=>'_blank')); ?> </td>
-			<td><?php echo h($student_job['start'].' - '.$student_job['end']); ?>&nbsp;</td>
+			<td><?php echo date('g:i a', strtotime(h($student_job['start']))).' - '.date('g:i a', strtotime(h($student_job['end']))); ?>&nbsp;</td>
 			<td><?php echo h($student_job['hours']); ?>&nbsp;</td>
 		</tr>
 	<?php endforeach; ?>
