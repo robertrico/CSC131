@@ -17,9 +17,9 @@
 							<?php echo h($event['Event']['name']); ?>
 							&nbsp;
 						</dd>
-						<dt><?php echo __('Time'); ?></dt>
+						<dt><?php echo __('Date/Time'); ?></dt>
 						<dd>
-							<?php echo h($event['Event']['time']); ?>
+							<?php echo date('m/d/Y g:i a', strtotime(h($event['Event']['time']))); ?>
 							&nbsp;
 						</dd>
 						<dt><?php echo __('Details'); ?></dt>

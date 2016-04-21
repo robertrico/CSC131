@@ -9,7 +9,9 @@
 						<legend><?php echo __('Add Event'); ?></legend>
 							<?php
 								echo $this->Form->input('name',array("class"=>"form-control"));
-								echo $this->Form->input('time',array("type"=>"text","class"=>"form-control"));
+								echo $this->Form->input('date',array("type"=>"text","class"=>"form-control"));
+								echo $this->Form->input('start_time',array("type"=>"text","class"=>"form-control"));
+								echo $this->Form->input('end_time',array("type"=>"text","class"=>"form-control"));
 								echo $this->Form->input('semester',array("options"=>$semesters,"class"=>"form-control"));
 								echo $this->Form->input('year',array("options"=>$years,"class"=>"form-control"));
 								echo $this->Form->input('location',array("class"=>"form-control"));
@@ -31,11 +33,17 @@
 </div>
 <script>
 $(document).ready(function(){
-	$('#EventTime').datetimepicker({ 
+	$('#EventDate').datetimepicker({ 
+		timepicker : false, 
+		step : 15,
+		formatDate : 'm/d/Y',
+		format : 'm/d/Y'
+	});
+	$('#EventStartTime,#EventEndTime').datetimepicker({ 
+		datepicker : false, 
 		step : 15,
 		formatTime : 'g:i a',
-		formatDate : 'm/d/Y',
-		format : 'm/d/Y g:i a'
+		format : 'g:i a'
 	});
 });
 </script>
