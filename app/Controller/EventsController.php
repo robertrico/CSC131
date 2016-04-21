@@ -68,7 +68,7 @@ class EventsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->request->data['Event']['time'] = date("Y-m-d H:i:s",strtotime($this->request->data['Event']['time']));
+			$this->request->data['Event']['date'] = date("Y-m-d H:i:s",strtotime($this->request->data['Event']['date']));
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
 				$this->Flash->success(__('The event has been saved.'));
