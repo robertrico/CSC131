@@ -19,8 +19,8 @@
 				</fieldset>
 				<div class="col-md-12 text-center">
 					<br/>
-					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-primary pull-left')); ?>
-					<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-primary pull-right'));?>
+					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default pull-left')); ?>
+					<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-default pull-right'));?>
 				</div>
 				<?php echo $this->Form->end(); ?>
 			</div>
