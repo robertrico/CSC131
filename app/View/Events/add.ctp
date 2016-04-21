@@ -1,4 +1,3 @@
-
 <div class="col-md-8 col-md-offset-2">
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading text-center"><h3 class="panel-title">Adding a New Event</h3>
@@ -11,6 +10,8 @@
 							<?php
 								echo $this->Form->input('name',array("class"=>"form-control"));
 								echo $this->Form->input('time',array("type"=>"text","class"=>"form-control"));
+								echo $this->Form->input('semester',array("options"=>$semesters,"class"=>"form-control"));
+								echo $this->Form->input('year',array("options"=>$years,"class"=>"form-control"));
 								echo $this->Form->input('location',array("class"=>"form-control"));
 								echo $this->Form->input('details',array("class"=>"form-control", "rows"=>"10"));
 							?>
