@@ -1,4 +1,5 @@
-<div class="col-md-4 col-md-offset-4 text-center">
+
+<div class="col-md-7 col-md-offset-3 text-center">
 	<div class="login-panel panel panel-default">
 		<div class="panel-heading">
 				<h3 class="panel-title"> <?php echo __('Please enter your username and password'); ?> </h3>
@@ -17,3 +18,4 @@
 		<?php echo $this->Html->link(__('Add User'),array('controller'=>'users','action'=>'add')); ?>
 	</div>
 </div>
+		
