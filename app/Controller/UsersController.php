@@ -17,6 +17,7 @@ class UsersController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
+		$this->loadModel('Role');
 		// Allow users to register and logout.
 		$this->Auth->allow('add', 'logout');
 	}
@@ -106,6 +107,7 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
+		$this->set('roles', $this->Role->find('list'));
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved.'));
