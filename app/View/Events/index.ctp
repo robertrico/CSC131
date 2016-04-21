@@ -40,10 +40,3 @@
 	?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Event'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Gen Report'), array('action' => 'generateReport')); ?></li>
-	</ul>
-</div>
