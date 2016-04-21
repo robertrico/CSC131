@@ -33,17 +33,20 @@
 </div>
 <script>
 $(document).ready(function(){
-	$('#EventDate').datetimepicker({ 
-		timepicker : false, 
-		step : 15,
-		formatDate : 'm/d/Y',
-		format : 'm/d/Y'
+	$('#EventStartTime,#EventEndTime').timepicker();
+	$('#EventDate').daterangepicker({ 
+        singleDatePicker: true
 	});
-	$('#EventStartTime,#EventEndTime').datetimepicker({ 
-		datepicker : false, 
-		step : 15,
-		formatTime : 'g:i a',
-		format : 'g:i a'
+
+	$('.calendar-table').before('<button class="multi" type="button">Multi Day</button>');
+
+
+	$('.daterangepicker').on('click','.multi',function(){
+		$('#EventDate').daterangepicker({ 
+			singleDatePicker: false
+		});
+		$('#EventDate').focus(); 
 	});
+
 });
 </script>
