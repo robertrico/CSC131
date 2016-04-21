@@ -45,6 +45,9 @@ class PagesController extends AppController {
  */
 	public function display() {
 		$this->loadModel('Event');
+		$this->loadModel('StudentJob');
+		$this->loadModel('Hour');
+
 		$path = func_get_args();
 
 		$count = count($path);
@@ -75,7 +78,28 @@ class PagesController extends AppController {
 			'order'=>'time ASC'
 
 		);
+		$sj_options = array(
+			'group' => 'Event.id',
+			'order'=>'Event.time ASC',
+			'conditions' => array(
+				'Event.time >= '=>date('Y-m-d'),
+				'StudentJob.user_id'=>$this->Session->read('Auth.User.id')
+				), 
+			'joins' => array(
+				array(
+					'table' => 'student_jobs',
+					'type' => 'inner',
+					'conditions' => array(
+						'Event.id = StudentJob.event_id'
+					)
+				)
+			)
+		);
+		$myjobs = $this->StudentJob->find('all',$sj_options);
+		$hours = $this->Hour->findAllByUserId($this->Session->read('Auth.User.id'));
+
 		$this->set('events', $this->Event->find('all',$options));
+		$this->set(compact('myjobs', 'hours'));
 
 		try {
 			$this->render(implode('/', $path));

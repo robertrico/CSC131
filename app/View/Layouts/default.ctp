@@ -30,8 +30,14 @@
 
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('cake-style');
+		echo $this->Html->css('daterangepicker');
+		echo $this->Html->css('jquery.datetimepicker');
+
 		echo $this->Html->script('jquery-1.12.0.min');
 		echo $this->Html->script('bootstrap.min');
+		echo $this->Html->script('moment.min');
+		echo $this->Html->script('daterangepicker');
+		echo $this->Html->script('jquery.datetimepicker');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

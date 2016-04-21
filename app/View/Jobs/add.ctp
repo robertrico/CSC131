@@ -1,35 +1,42 @@
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-12">
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Add a Job</h3>
+			<h3 class="panel-title">Add Job to <?php echo $event['Event']['name'];?></h3>
 		</div>
-		<div class="panel-body">
-			<div class="jobs form">
+		<div class="panel-body text-center">
 			<?php echo $this->Form->create('Job'); ?>
-				<fieldset>
-					<legend><?php echo __('Add Job'); ?></legend>
-				<?php
-					echo $this->Form->input('name',array("class"=>"form-control"));
-					echo $this->Form->input('details',array("class"=>"form-control"));
-					echo $this->Form->input('available_positions');
-					echo $this->Form->input('start_time');
-					echo $this->Form->input('end_time');
-				?>
-				</fieldset>
-			</div>
-			<div class="col-md-12 text-center">
-					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-primary pull-left')); ?>
-					<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-primary pull-right'));?>
+				<legend><?php echo __('Add Job'); ?></legend>
+				<div class="col-md-3 col-md-offset-3">
+					<?php echo $this->Form->input('start_time',array('class'=>'form-control','type'=>'text')); ?>
 				</div>
-			<div class="actions">
-				<h3><?php echo __('Actions'); ?></h3>
-				<ul>
-
-					<li><?php echo $this->Html->link(__('List Jobs'), array('action' => 'index')); ?></li>
-					<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
-					<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
-				</ul>
-			</div>
+				<div class="col-md-3">
+					<?php echo $this->Form->input('end_time',array('class'=>'form-control','type'=>'text')); ?>
+				</div>
+				<div class="col-md-4 col-md-offset-3">
+					<?php echo $this->Form->input('name',array('class'=>'form-control','label'=>'Job Title')); ?>
+				</div>
+				<div class="col-md-2">
+					<?php echo $this->Form->input('available_positions',array('class'=>'form-control')); ?>
+				</div>
+				<div class="col-md-8 col-md-offset-2">
+					<?php echo $this->Form->input('details',array('class'=>'form-control','rows'=>'15')); ?>
+				</div>
+				<div class="col-md-6 col-md-offset-3">
+					<br/>
+					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default')); ?>
+				</div>
+			<?php echo $this->Form->end(); ?>
 		</div>
 	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+	$('#JobStartTime, #JobEndTime').datetimepicker({ 
+		datepicker : false,
+		step : 15,
+		formatTime : 'g:i a',
+		format : 'g:i a'
+	});
+});
+</script>

@@ -31,12 +31,10 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $semesters = array('Fall'=>'Fall','Spring'=>'Spring');
 	public $components = array(
 		'DebugKit.Toolbar',
         'Auth' => array(
-            'loginRedirect' => array(
-				'/'
-            ),
             'logoutRedirect' => array(
                 'controller' => 'users',
                 'action' => 'login'

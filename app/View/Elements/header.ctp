@@ -24,9 +24,10 @@
 			<ul class="dropdown-menu">
 				<li><?php echo $this->Html->link('Home','/');?></li>
 				<li><?php echo $this->Html->link('My Profile',array('controller'=>'users','action'=>'view',$this->Session->read('Auth.User.id')));?></li>
-				<li><?php echo $this->Html->link('Events',array('controller'=>'events','action'=>'index'));?></li>
+				<li><?php echo $this->Html->link('My Events','/myEvents');?></li>
+				<li><?php echo $this->Html->link('All Events',array('controller'=>'events','action'=>'index'));?></li>
 				<li role="separator" class="divider"></li>
-				<li><a href="#">Separated link</a></li>
+				<li><?php echo $this->Html->link('Add Event',array('controller'=>'events','action'=>'add'));?></li>
 			</ul>
 		</li>
 		<li><?php echo $this->Html->link('Logout',array('controller'=>'users','action'=>'logout'));?></li>

@@ -13,12 +13,13 @@ class EventsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Flash','Session');
 
 
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->loadModel('User');
+		$this->set('semesters',$this->semesters);
 	}
 /**
  * index method
@@ -29,6 +30,7 @@ class EventsController extends AppController {
 		$this->Event->recursive = 0;
 		$this->set('events', $this->Paginator->paginate());
 	}
+
 
 /**
  * view method
@@ -44,8 +46,10 @@ class EventsController extends AppController {
 		$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
 		$event = $this->Event->find('first', $options);
 		$student_jobs = array();
+		$jobs = $event['Job'];
 		foreach($event['StudentJob'] as $student_job){
 			$this->Event->Job->id = $student_job['job_id'];
+			
 			$job = array();
 			$job['user'] = array('id'=>$student_job['user_id'], 'name'=>$this->User->getFullName($student_job['user_id']));
 			$job['job'] = array('id'=>$this->Event->Job->id,'name'=>$this->Event->Job->field('name'));
@@ -55,7 +59,7 @@ class EventsController extends AppController {
 			$student_jobs[] = $job;
 		}
 
-		$this->set(compact('event','student_jobs'));
+		$this->set(compact('event','student_jobs', 'jobs'));
 	}
 
 /**
@@ -65,6 +69,7 @@ class EventsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$this->request->data['Event']['time'] = date("Y-m-d H:i:s",strtotime($this->request->data['Event']['time']));
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
 				$this->Flash->success(__('The event has been saved.'));
@@ -118,5 +123,60 @@ class EventsController extends AppController {
 			$this->Flash->error(__('The event could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function generateReport($event_id=null) {
+		$this->autoRender = false;
+
+		$event_options = array(
+				'conditions' => array(
+					'Event.id' => $event_id
+				)
+			);
+
+
+		$data = ClassRegistry::init('Event')->find('first',$event_options); 
+		$event = $data['Event'];
+		$jobs = Hash::combine($data['Job'], '{n}.id', '{n}');
+		$users = Hash::combine($data['StudentJob'], '{n}.user_id', '{n}');
+		$attached_users = array();
+		unset($data);
+
+		foreach($users as $index => $job){
+			$attached_users[] = $index;
+		}
+
+		$s_options = array(
+			'conditions' => array(
+				'User.id' => $attached_users
+			)
+		);
+
+		$students_info = ClassRegistry::init('StudentInfo')->find('all',$s_options); 
+		$students_info = Hash::combine($students_info, '{n}.User.id', '{n}');
+		unset($attached_users);
+
+		$csv = array();
+
+		$header_row = array('StudentId','Name','Event','Hours');
+		$csv_file = fopen('php://output', 'w');
+
+		header('Content-type: application/csv');
+		header('Content-Disposition: attachment; filename="'.$event['name'].'.csv"');
+
+		fputcsv($csv_file,$header_row,',','"');
+
+		foreach($users as $id => $field) {
+			$row = array(
+				$students_info[$id]['StudentInfo']['studentid'],
+				$students_info[$id]['User']['firstname'].' '.$students_info[$id]['User']['lastname'],
+				$event['name'],
+				$field['total_hours']
+			);
+
+			fputcsv($csv_file,$row,',','"');
+		}
+		fclose($csv_file);
+		exit(1);
 	}
 }
