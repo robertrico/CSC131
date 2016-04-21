@@ -1,5 +1,3 @@
-
-
 <div class="col-md-8 col-md-offset-1">
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading text-center">
