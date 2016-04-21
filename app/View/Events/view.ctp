@@ -7,19 +7,24 @@
 							<div class="events view">
 				<h2><?php echo __('Event Information for ' . $event['Event']['name']); ?></h2>
 					<dl>
-						<dt><?php echo __('ID#'); ?></dt>
-						<dd>
-							<?php echo h($event['Event']['id']); ?>
-							&nbsp;
-						</dd>
 						<dt><?php echo __('Name'); ?></dt>
 						<dd>
 							<?php echo h($event['Event']['name']); ?>
 							&nbsp;
 						</dd>
+						<dt><?php echo __('Date'); ?></dt>
+						<dd>
+							<?php echo date('m/d/Y', strtotime(h($event['Event']['date']))); ?>
+							&nbsp;
+						</dd>
 						<dt><?php echo __('Time'); ?></dt>
 						<dd>
-							<?php echo h($event['Event']['time']); ?>
+							<?php echo date('g:i a', strtotime(h($event['Event']['start_time']))).' - '.date('g:i a', strtotime(h($event['Event']['end_time']))); ?>
+							&nbsp;
+						</dd>
+						<dt><?php echo __('Location'); ?></dt>
+						<dd>
+							<?php echo h($event['Event']['location']); ?>
 							&nbsp;
 						</dd>
 						<dt><?php echo __('Details'); ?></dt>
@@ -35,8 +40,7 @@
 	<tr>
 			<th><?php echo (__('Job Name')); ?></th>
 			<th><?php echo (__('Positions left')); ?></th>
-			<th><?php echo (__('Start time')); ?></th>
-			<th><?php echo (__('End time')); ?></th>
+			<th><?php echo (__('Time')); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -44,8 +48,7 @@
 		<tr>
 			<td><?php echo $this->Html->link(__(h($event_job['name'])), array('controller'=>'jobs','action' => 'view', $event_job['id']),array('target'=>'_blank')); ?> </td>
 			<td><?php echo h($event_job['available_positions']); ?>&nbsp;</td>
-			<td><?php echo h($event_job['start_time']); ?>&nbsp;</td>
-			<td><?php echo h($event_job['end_time']); ?>&nbsp;</td>
+			<td><?php echo date('g:i a', strtotime(h($event_job['start_time']))).' - '.date('g:i a', strtotime(h($event_job['end_time']))); ?>&nbsp;</td>
 		</tr>
 	<?php endforeach; ?>
 	</tbody>
@@ -66,7 +69,7 @@
 		<tr>
 			<td><?php echo $this->Html->link(__(h($student_job['user']['name'])), array('controller'=>'users','action' => 'view', $student_job['user']['id']),array('target'=>'_blank')); ?> </td>
 			<td><?php echo $this->Html->link(__(h($student_job['job']['name'])), array('controller'=>'jobs','action' => 'view', $student_job['job']['id']),array('target'=>'_blank')); ?> </td>
-			<td><?php echo h($student_job['start'].' - '.$student_job['end']); ?>&nbsp;</td>
+			<td><?php echo date('g:i a', strtotime(h($student_job['start']))).' - '.date('g:i a', strtotime(h($student_job['end']))); ?>&nbsp;</td>
 			<td><?php echo h($student_job['hours']); ?>&nbsp;</td>
 		</tr>
 	<?php endforeach; ?>

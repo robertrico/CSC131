@@ -9,10 +9,11 @@
 				<fieldset>
 				<legend><?php echo __('Edit Event'); ?></legend>
 				<?php
-				echo $this->Form->input('id',array("class"=>"form-control"));
+				echo $this->Form->input('time',array("class"=>"form-control",'type'=>'text'));
 				echo $this->Form->input('name',array("class"=>"form-control"));
 				echo $this->Form->input('location',array("class"=>"form-control"));
-				echo $this->Form->input('time');
+				echo $this->Form->input('semester',array("options"=>$semesters,"class"=>"form-control"));
+				echo $this->Form->input('year',array("options"=>$years,"class"=>"form-control"));
 				echo $this->Form->input('details',array("class"=>"form-control","rows"=>"10"));
 				?>
 				</fieldset>
@@ -26,3 +27,13 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+	$('#EventTime').datetimepicker({ 
+		step : 15,
+		formatTime : 'g:i a',
+		formatDate : 'm/d/Y',
+		format : 'm/d/Y g:i a'
+	});
+});
+</script>

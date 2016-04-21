@@ -52,9 +52,9 @@ class EventsController extends AppController {
 			$job = array();
 			$job['user'] = array('id'=>$student_job['user_id'], 'name'=>$this->User->getFullName($student_job['user_id']));
 			$job['job'] = array('id'=>$this->Event->Job->id,'name'=>$this->Event->Job->field('name'));
-			$job['start'] = date('h:m',strtotime($this->Event->Job->field('start_time')));
-			$job['end'] = date('h:m',strtotime($this->Event->Job->field('end_time')));
-			$job['hours'] = date($job['end']) - date($job['start']);
+			$job['start'] = date('g:i a',strtotime($this->Event->Job->field('start_time')));
+			$job['end'] = date('g:i a',strtotime($this->Event->Job->field('end_time')));
+			$job['hours'] = $this->Event->Job->field('end_time') - $this->Event->Job->field('start_time');
 			$student_jobs[] = $job;
 		}
 
@@ -91,6 +91,8 @@ class EventsController extends AppController {
 			throw new NotFoundException(__('Invalid event'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			$this->request->data['Event']['time'] = date("Y-m-d H:i:s",strtotime($this->request->data['Event']['time']));
+			$this->Event->id = $id;
 			if ($this->Event->save($this->request->data)) {
 				$this->Flash->success(__('The event has been saved.'));
 				return $this->redirect(array('action' => 'index'));
