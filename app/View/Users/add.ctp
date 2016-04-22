@@ -10,8 +10,10 @@
 			echo $this->Form->input('lastname',array("class"=>"form-control", "label"=>"Last Name",'required'));
 			echo $this->Form->input('id',array("class"=>"form-control", "label"=>"Student Id",'required'));
 			echo $this->Form->input('email',array("class"=>"form-control", "label"=>"Email",'required'));
-			echo $this->Form->input('major',array("class"=>"form-control", "label"=>"Major" ,'required'));
-			echo $this->Form->input('studentid',array("class"=>"form-control", "label"=>"Student ID" ,'required'));
+			if(!$permissions['Role']['student_control']){
+				echo $this->Form->input('major',array("class"=>"form-control", "label"=>"Major" ,'required'));
+				echo $this->Form->input('studentid',array("class"=>"form-control", "label"=>"Student ID" ,'required'));
+			}
 			echo $this->Form->input('username',array("class"=>"form-control", "label"=>"Username",'required'));
 			echo $this->Form->input('password',array("class"=>"form-control", "label"=>"Password",'required'));
 			?>
