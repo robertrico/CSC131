@@ -74,17 +74,26 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function add($student=false) {
+	public function add($role=false) {
+		$roles = $this->Role->find('all');
+		$permissions = array();
+		foreach($roles as $x){
+			if($x['Role']['id'] == $role){
+				$permissions = $x;
+				break;
+			}
+		}
+		$this->set('permissions', $permissions);
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				if($student){
+				if(!$permissions['Role']['student_control']){
 					$this->loadModel('StudentInfo');
 					$info = array();
 					$info['StudentInfo'] = array(
 						'studentid'=>$this->request->data['User']['studentid'],
 						'user_id'=>$this->User->getLastInsertId(),
-						'major'=>$this->request->data['User']['studentid']
+						'major'=>$this->request->data['User']['major']
 					);
 					$this->StudentInfo->save($info);
 				}
