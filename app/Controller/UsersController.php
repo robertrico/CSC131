@@ -25,6 +25,9 @@ class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
+				$role_id = $this->Session->read('Auth.User.role_id');
+				$cur_role = $this->Role->findById($role_id);
+				$this->Session->write('Auth.Role',$cur_role['Role']);
 				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Session->setFlash(__('Invalid username or password, try again'));
@@ -74,17 +77,26 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function add($student=false) {
+	public function add($role=false) {
+		$roles = $this->Role->find('all');
+		$permissions = array();
+		foreach($roles as $x){
+			if($x['Role']['id'] == $role){
+				$permissions = $x;
+				break;
+			}
+		}
+		$this->set('permissions', $permissions);
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				if($student){
+				if(!$permissions['Role']['student_control']){
 					$this->loadModel('StudentInfo');
 					$info = array();
 					$info['StudentInfo'] = array(
 						'studentid'=>$this->request->data['User']['studentid'],
 						'user_id'=>$this->User->getLastInsertId(),
-						'major'=>$this->request->data['User']['studentid']
+						'major'=>$this->request->data['User']['major']
 					);
 					$this->StudentInfo->save($info);
 				}
@@ -142,3 +154,4 @@ class UsersController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 }
+
