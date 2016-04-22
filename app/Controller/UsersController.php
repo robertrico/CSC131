@@ -78,14 +78,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add($role=false) {
-		$roles = $this->Role->find('all');
-		$permissions = array();
-		foreach($roles as $x){
-			if($x['Role']['id'] == $role){
-				$permissions = $x;
-				break;
-			}
-		}
+		$permissions = $this->Role->findById($role);
 		$this->set('permissions', $permissions);
 		if ($this->request->is('post')) {
 			$this->User->create();
