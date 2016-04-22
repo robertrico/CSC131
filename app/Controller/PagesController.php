@@ -75,14 +75,14 @@ class PagesController extends AppController {
 				'Event.name'
 			),
 			'limit'=>10,
-			'order'=>'time ASC'
+			'order'=>'date ASC'
 
 		);
 		$sj_options = array(
 			'group' => 'Job.id',
-			'order'=>'Event.time ASC',
+			'order'=>'Event.date ASC',
 			'conditions' => array(
-				'Event.time >= '=>date('Y-m-d'),
+				'Event.date >= '=>date('Y-m-d'),
 				'StudentJob.user_id'=>$this->Session->read('Auth.User.id')
 				), 
 			'joins' => array(

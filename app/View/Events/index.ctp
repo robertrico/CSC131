@@ -11,7 +11,7 @@
 				<tr>
 						<th><?php echo $this->Paginator->sort('name'); ?></th>
 						<th><?php echo $this->Paginator->sort('details'); ?></th>
-						<th><?php echo $this->Paginator->sort('time'); ?></th>
+						<th><?php echo $this->Paginator->sort('date'); ?></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -19,7 +19,7 @@
 				<tr>
 					<td><?php echo $this->Html->link(__(h($event['Event']['name'])), array('action' => 'view', $event['Event']['id'])); ?>&nbsp;</td>
 					<td><?php echo h($event['Event']['details']); ?>&nbsp;</td>
-					<td><?php echo h($event['Event']['time']); ?>&nbsp;</td>
+					<td><?php echo h($event['Event']['date']); ?>&nbsp;</td>
 				</tr>
 			<?php endforeach; ?>
 				</tbody>
