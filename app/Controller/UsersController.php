@@ -25,6 +25,9 @@ class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
+				$role_id = $this->Session->read('Auth.User.role_id');
+				$cur_role = $this->Role->findById($role_id);
+				$this->Session->write('Auth.Role',$cur_role['Role']);
 				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Session->setFlash(__('Invalid username or password, try again'));
