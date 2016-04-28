@@ -9,7 +9,9 @@
 						<legend><?php echo __('Add Event'); ?></legend>
 							<?php
 								echo $this->Form->input('name',array("class"=>"form-control"));
-								echo $this->Form->input('time',array("type"=>"text","class"=>"form-control"));
+								echo $this->Form->input('date',array("type"=>"text","class"=>"form-control"));
+								echo $this->Form->input('start_time',array("type"=>"text","class"=>"form-control"));
+								echo $this->Form->input('end_time',array("type"=>"text","class"=>"form-control"));
 								echo $this->Form->input('semester',array("options"=>$semesters,"class"=>"form-control"));
 								echo $this->Form->input('year',array("options"=>$years,"class"=>"form-control"));
 								echo $this->Form->input('location',array("class"=>"form-control"));
@@ -18,8 +20,8 @@
 					</fieldset>
 					<div class="col-md-12 text-center">
 						<br/>
-						<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-primary pull-left')); ?>
-						<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-primary pull-right'));?>
+						<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default pull-left')); ?>
+						<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-default pull-right'));?>
 
 					</div>
 					
@@ -31,11 +33,20 @@
 </div>
 <script>
 $(document).ready(function(){
-	$('#EventTime').datetimepicker({ 
-		step : 15,
-		formatTime : 'g:i a',
-		formatDate : 'm/d/Y',
-		format : 'm/d/Y g:i a'
+	$('#EventStartTime,#EventEndTime').timepicker();
+	$('#EventDate').daterangepicker({ 
+        singleDatePicker: true
 	});
+
+	$('.calendar-table').before('<button class="multi" type="button">Multi Day</button>');
+
+
+	$('.daterangepicker').on('click','.multi',function(){
+		$('#EventDate').daterangepicker({ 
+			singleDatePicker: false
+		});
+		$('#EventDate').focus(); 
+	});
+
 });
 </script>

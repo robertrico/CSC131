@@ -11,7 +11,7 @@
 				echo $this->Form->input('lastname',array("class"=>"form-control"));
 				echo $this->Form->input('email',array("class"=>"form-control"));
 				echo $this->Form->input('username',array("class"=>"form-control"));
-				echo $this->Form->input('password',array("class"=>"form-control"));
+				echo $this->Form->input('role_id',array("options"=>$roles,"class"=>"form-control"));
 				?>
 				<div class="col-md-8 col-md-offset-5 text:center">
 					<br/>
