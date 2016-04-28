@@ -9,7 +9,7 @@
 		<div class="users form" >
 			<?php echo $this->Form->create('User'); ?>
 				<div class="users view">
-					<table  class="table" cellpadding="1" cellspacing="0" border="6">
+					<table  class="table" cellpadding="1" cellspacing="0">
 						<tr>
 							<td><?php echo __('First name'); ?></td>
 							<td><?php echo h($user['User']['firstname']); ?>&nbsp;</td>
