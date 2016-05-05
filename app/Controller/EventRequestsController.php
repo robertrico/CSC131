@@ -15,11 +15,18 @@ class EventRequestsController extends AppController {
  */
 	public $components = array('Paginator','Flash');
 
+
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow(array('add'));
+	}
+
 /**
  * index method
  *
  * @return void
  */
+
 	public function index() {
 		$this->EventRequest->recursive = 0;
 		$this->set('eventRequests', $this->Paginator->paginate());

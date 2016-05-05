@@ -159,7 +159,7 @@ class EventsController extends AppController {
 
 		$csv = array();
 
-		$header_row = array('StudentId','Name','Event','Hours');
+		$header_row = array('StudentId','Name','Email','Event','Hours');
 		$csv_file = fopen('php://output', 'w');
 
 		header('Content-type: application/csv');
@@ -171,6 +171,7 @@ class EventsController extends AppController {
 			$row = array(
 				$students_info[$id]['StudentInfo']['studentid'],
 				$students_info[$id]['User']['firstname'].' '.$students_info[$id]['User']['lastname'],
+				$students_info[$id]['User']['email'],
 				$event['name'],
 				$field['total_hours']
 			);

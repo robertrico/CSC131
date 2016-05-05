@@ -78,15 +78,18 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add($role=false) {
-		$roles = $this->Role->find('all');
-		$permissions = array();
-		foreach($roles as $x){
-			if($x['Role']['id'] == $role){
-				$permissions = $x;
-				break;
-			}
+
+		if($role == 2){
+			$this->Session->setFlash("You cannot do that.",'default',array('class'=>'alert alert-danger'));
+			return $this->redirect($this->referer());
 		}
-		$this->set('permissions', $permissions);
+
+		$role = $this->Role->findById($role);
+
+		$this->set('student',!$role['Role']['student_control']);
+		$this->request->data['User']['role'] = $role;
+		$this->request->data['User']['active'] = 0;
+
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {

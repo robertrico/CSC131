@@ -80,12 +80,15 @@
 				<ul>
 					<li><?php echo $this->Html->link(__('Sign up for Event'), array('controller'=>'studentjobs','action' => 'add', $event['Event']['id'])); ?> </li>
 				</ul>
-				<h3><?php echo __('Faculty Actions'); ?></h3>
-				<ul>
-					<li><?php echo $this->Html->link(__('Add Job to Event'), array('controller'=>'jobs','action' => 'add', $event['Event']['id'])); ?> </li>
-					<li><?php echo $this->Html->link(__('Edit Event'), array('action' => 'edit', $event['Event']['id'])); ?> </li>
-					<li><?php echo $this->Form->postLink(__('Delete Event'), array('action' => 'delete', $event['Event']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $event['Event']['id']))); ?> </li>
-				</ul>
+				<?php if($this->Session->read('Auth.Role.event_control')): ?>
+					<h3><?php echo __('Faculty Actions'); ?></h3>
+					<ul>
+						<li><?php echo $this->Html->link(__('Generate Event Report'), array('controller'=>'events','action' => 'generateReport', $event['Event']['id'])); ?> </li>
+						<li><?php echo $this->Html->link(__('Add Job to Event'), array('controller'=>'jobs','action' => 'add', $event['Event']['id'])); ?> </li>
+						<li><?php echo $this->Html->link(__('Edit Event'), array('action' => 'edit', $event['Event']['id'])); ?> </li>
+						<li><?php echo $this->Form->postLink(__('Delete Event'), array('action' => 'delete', $event['Event']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $event['Event']['id']))); ?> </li>
+					</ul>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
