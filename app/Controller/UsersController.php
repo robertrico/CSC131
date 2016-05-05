@@ -78,6 +78,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add($role=false) {
+
 		if($role == 2){
 			$this->Session->setFlash("You cannot do that.",'default',array('class'=>'alert alert-danger'));
 			return $this->redirect($this->referer());
