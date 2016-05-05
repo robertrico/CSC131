@@ -23,7 +23,7 @@
 				          <p><h4><?php echo h($event['Event']['location']); ?>&nbsp;</h4></p>
 				        </div>
 				      </div>
-				      <div class="container col-md-12 col-md-offset-1">
+				      <div class="container col-md-11 col-md-offset-1">
 						<br/>
 						<dt><h3><?php echo __('Details'); ?></h3></dt>
 						<dd><h4>

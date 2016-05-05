@@ -1,29 +1,30 @@
-<div class="col-md-12">
+<div class="col-md-6 col-md-offset-3">
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Add Job to <?php echo $event['Event']['name'];?></h3>
+			<h3 class="panel-title">Add Job</h3>
 		</div>
-		<div class="panel-body text-center">
+		<div class="panel-body">
 			<?php echo $this->Form->create('Job'); ?>
-				<legend><?php echo __('Add Job'); ?></legend>
-				<div class="col-md-3 col-md-offset-3">
+				<legend><?php echo __('Add Job to ' . $event['Event']['name']); ?></legend>
+				<div class="col-md-6 col-md-offset-0">
 					<?php echo $this->Form->input('start_time',array('class'=>'form-control','type'=>'text')); ?>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<?php echo $this->Form->input('end_time',array('class'=>'form-control','type'=>'text')); ?>
 				</div>
-				<div class="col-md-4 col-md-offset-3">
+				<div class="col-md-6 col-md-offset-0">
 					<?php echo $this->Form->input('name',array('class'=>'form-control','label'=>'Job Title')); ?>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-6">
 					<?php echo $this->Form->input('available_positions',array('class'=>'form-control')); ?>
 				</div>
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-12 col-md-offset-0">
 					<?php echo $this->Form->input('details',array('class'=>'form-control','rows'=>'15')); ?>
 				</div>
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-12 text-center">
 					<br/>
-					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default')); ?>
+					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default pull-left')); ?>
+					<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-default pull-right'));?>
 				</div>
 			<?php echo $this->Form->end(); ?>
 		</div>
