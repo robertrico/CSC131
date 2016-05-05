@@ -14,7 +14,7 @@
 				<?php echo $this->Form->button(__('Login'),array('type'=>'submit','class'=>'btn btn-default')); ?>
 			<?php echo $this->Form->end(); ?>
 		</div>
-		<?php echo $this->Html->link(__('Add User'),array('controller'=>'users','action'=>'add')); ?>
+		 <?php echo $this->Html->link(__('Add User'),array('controller'=>'users','action'=>'add',1)); ?>
 	</div>
 </div>
 		

@@ -4,7 +4,7 @@
 			<h3 class="panel-title">Events</h3>
 		</div>
 		<div class="panel-body">
-						<div class="events index">
+				<div class="events index">
 				<h2><?php echo __('List of Community Service Events'); ?></h2>
 				<table class="table table-striped" cellpadding="0" cellspacing="0">
 				<thead>
