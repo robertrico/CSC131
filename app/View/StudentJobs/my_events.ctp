@@ -1,4 +1,5 @@
-<div class="col-md-8 col-md-offset-2">
+
+<div class="col-md-10 col-md-offset-1">
 	<div class="login-panel panel panel-default">
 		<div class="panel-heading">
 				<h3 class="panel-title"> <?php echo __('My Events'); ?> </h3>
@@ -41,10 +42,11 @@
 			<?php
 				echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
 				echo $this->Paginator->numbers(array('separator' => ''));
-				echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+				echo $this->Paginator->next(__(' next') . ' >', array(), null, array('class' => 'next disabled'));
 			?>
 			</div>
 		</div>
 		</div>
 	</div>
 </div>
+

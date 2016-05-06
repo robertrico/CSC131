@@ -1,3 +1,13 @@
+
+
+
+<div class="col-md-6 col-md-offset-3">
+<div class="main-panel panel panel-default">
+<div class="panel-heading">
+<h1 class=“panel-title text-center” >Specify topic</h1>
+</div>
+
+
 <div class="studentJobs form">
 <?php echo $this->Form->create('StudentJob'); ?>
 	<fieldset>
@@ -24,4 +34,7 @@
 		<li><?php echo $this->Html->link(__('List Jobs'), array('controller' => 'jobs', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Job'), array('controller' => 'jobs', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+</div>
 </div>

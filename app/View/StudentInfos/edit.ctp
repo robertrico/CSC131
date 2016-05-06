@@ -1,3 +1,13 @@
+
+
+
+<div class="col-md-6 col-md-offset-3">
+<div class="main-panel panel panel-default">
+<div class="panel-heading">
+<h1 class=“panel-title text-center” >Specify topic</h1>
+</div>
+
+
 <div class="studentInfos form">
 <?php echo $this->Form->create('StudentInfo'); ?>
 	<fieldset>
@@ -22,4 +32,7 @@
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+</div>
 </div>

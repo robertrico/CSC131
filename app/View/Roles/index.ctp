@@ -1,6 +1,11 @@
-<div class="roles index">
-	<h2><?php echo __('Roles'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+
+<div class="main-panel panel panel-default">
+	<div class="panel-heading">
+		<h1 class="panel-title text-center" >ROLES</h1>
+			</div>
+				<div class="roles index">
+	
+	<table class="table" cellpadding="1" cellspacing="0" border="1">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -40,7 +45,7 @@
 	<?php
 		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__(' next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>
@@ -50,3 +55,10 @@
 		<li><?php echo $this->Html->link(__('New Role'), array('action' => 'add')); ?></li>
 	</ul>
 </div>
+
+
+
+	</div>
+</div>
+
+
