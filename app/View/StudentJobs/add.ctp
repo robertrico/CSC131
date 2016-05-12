@@ -1,3 +1,4 @@
+
 <div class="col-md-6 col-md-offset-3">
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading">
@@ -7,15 +8,24 @@
 			<div class="studentJobs form">
 			<?php echo $this->Form->create('StudentJob'); ?>
 				<fieldset>
-					<legend><?php echo __('Add Student Job'); ?></legend>
-				<?php
-					echo $event['Event']['name'];
-					echo $this->Form->input('job_id');
-				?>
+				<br></br>
+				<div class="col-md-6 col-md-offset-3">
+					<table class="table" cellpadding="1" cellspacing="0" border="1">
+					<!--<legend><?php echo __('Add Student Job'); ?></legend>-->
+					<?php
+						echo $event['Event']['name'];
+						echo $this->Form->input('job_id');
+					?>
+					</table>
+				</div>
 				</fieldset>
-			<?php echo $this->Form->end(__('Submit')); ?>
+				<br></br>
+			<div class="text-center">
+			<?php echo $this->Form->button(__('Submit'), array('class'=>'btn btn-primary pull-center' ,'class'=>'btn btn-default'));?>
+			</div>
 			</div>
 			<div class="actions">
+			<br></br>
 				<h3><?php echo __('Actions'); ?></h3>
 				<ul>
 
@@ -31,3 +41,5 @@
 		</div>
 	</div>
 </div>
+
+
