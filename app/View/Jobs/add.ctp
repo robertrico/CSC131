@@ -23,7 +23,9 @@
 				</div>
 				<div class="col-md-6 col-md-offset-3">
 					<br/>
-					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default')); ?>
+					<?php echo $this->Form->submit(__('Add Job'),array('class'=>'btn btn-default')); ?>
+					<br/>
+					<?php echo $this->Html->link(__('Done adding Jobs'),array('controller'=>'events','action'=>'view',$event['Event']['id']),array('class'=>'btn btn-success')); ?>
 				</div>
 			<?php echo $this->Form->end(); ?>
 		</div>
