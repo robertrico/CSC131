@@ -1,25 +1,31 @@
 
 
 
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-7 col-md-offset-3">
 <div class="main-panel panel panel-default">
-<div class="panel-heading">
-<h1 class=“panel-title text-center” >Specify topic</h1>
+<div class="panel-heading text-center">
+<h2 class=“panel-title ” >Edit Student Job</h2>
 </div>
 
 
 <div class="studentJobs form">
+<br></br>
 <?php echo $this->Form->create('StudentJob'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Student Job'); ?></legend>
+		<!--<legend><?php echo __('Edit Student Job'); ?></legend>-->
+	<div class="col-md-6 col-md-offset-1">
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('event_id');
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('job_id');
 	?>
+	</div>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<div class= "text-center">
+</br>
+<?php echo $this->Form->button(__('Submit'), array('class'=>'btn btn-primary pull-center' ,'class'=>'btn btn-default'));?>
+</div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

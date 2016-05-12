@@ -2,11 +2,11 @@
 <div class="col-md-6 col-md-offset-3">
 <div class="main-panel panel panel-default">
 <div class="panel-heading">
-<h1 class=“panel-title text-center” >Specify topic</h1>
+<h1 class=“panel-title text-center” >Student Info</h1>
 </div>
 
 <div class="studentInfos view">
-<h2><?php echo __('Student Info'); ?></h2>
+<!--<h2><?php echo __('Student Info'); ?></h2>-->
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>

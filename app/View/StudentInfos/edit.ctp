@@ -4,14 +4,14 @@
 <div class="col-md-6 col-md-offset-3">
 <div class="main-panel panel panel-default">
 <div class="panel-heading">
-<h1 class=“panel-title text-center” >Specify topic</h1>
+<h1 class=“panel-title text-center” >Student Info</h1>
 </div>
 
 
 <div class="studentInfos form">
 <?php echo $this->Form->create('StudentInfo'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Student Info'); ?></legend>
+		<!--<legend><?php echo __('Edit Student Info'); ?></legend>-->
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('studentid');
