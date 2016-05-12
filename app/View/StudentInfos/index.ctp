@@ -1,6 +1,14 @@
+
+
+<div class="col-md-12 col-md-offset-0">
+<div class="main-panel panel panel-default">
+<div class="panel-heading">
+<h1 class=“panel-title text-center” >Student Infos</h1>
+</div>
+
 <div class="studentInfos index">
-	<h2><?php echo __('Student Infos'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<!--<h2><?php echo __('Student Infos'); ?></h2>-->
+	<table class="table" cellpadding="1" cellspacing="0" border="1">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -40,7 +48,7 @@
 	<?php
 		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
 		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->next(__(' next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>
@@ -53,4 +61,7 @@
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+
+</div>
 </div>

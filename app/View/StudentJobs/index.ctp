@@ -1,3 +1,13 @@
+
+
+
+
+<div class="col-md-6 col-md-offset-3">
+<div class="main-panel panel panel-default">
+<div class="panel-heading">
+<h1 class=“panel-title text-center” >Specify topic</h1>
+</div>
+
 <div class="col-md-8 col-md-offset-2">
 	<div class="main-panel panel panel-default">
 		<div class="panel-heading">
@@ -66,4 +76,7 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+</div>
 </div>

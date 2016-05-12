@@ -5,55 +5,49 @@
 		</div>
 		<div class="panel-body">
 			<div class="jobs view">
-			<h2><?php echo __('Job Description'); ?></h2>
+			<h2><?php echo __('Description of Job: ' .$job['Job']['name']); ?></h2>
+				<!--THIS IS THE NEW CODE-->
 				<dl>
-					<dt><?php echo __('ID#'); ?></dt>
-					<dd>
-						<?php echo h($job['Job']['id']); ?>
-						&nbsp;
-					</dd>
-					<dt><?php echo __('Name'); ?></dt>
-					<dd>
-						<?php echo h($job['Job']['name']); ?>
-						&nbsp;
-					</dd>
-					<dt><?php echo __('Details'); ?></dt>
-					<dd>
-						<?php echo h($job['Job']['details']); ?>
-						&nbsp;
-					</dd>
-					<dt><?php echo __('Event'); ?></dt>
-					<dd>
-						<?php echo $this->Html->link($job['Event']['name'], array('controller' => 'events', 'action' => 'view', $job['Event']['id'])); ?>
-						&nbsp;
-					</dd>
-					<dt><?php echo __('Available Positions'); ?></dt>
-					<dd>
-						<?php echo h($job['Job']['available_positions']); ?>
-						&nbsp;
-					</dd>
-					<dt><?php echo __('Start Time'); ?></dt>
-					<dd>
-						<?php echo h(date('g:i a',strtotime($job['Job']['start_time']))); ?>
-						&nbsp;
-					</dd>
-					<dt><?php echo __('End Time'); ?></dt>
-					<dd>
-						<?php echo h(date('g:i a',strtotime($job['Job']['end_time']))); ?>
-						&nbsp;
-					</dd>
+					<div class="container col-md-12 col-md-offset-0">
+				        <div class="col-md-3">
+				          <h3>Event with this Job</h3>
+				          <p><h4><?php echo $this->Html->link($job['Event']['name'], array('controller' => 'events', 'action' => 'view', $job['Event']['id'])); ?>&nbsp;</h4></p>
+				        </div>
+
+				        <div class="col-md-3">
+				          <h3>Start Time</h3>
+				          <p>
+				          <h4><i><?php echo h(date('g:i a',strtotime($job['Job']['start_time']))); ?>&nbsp;</i></h4>
+				          </p>
+				        </div>
+				        
+				        <div class="col-md-3">
+				          <h3>End Time</h3>
+				          <p>
+				          <h4><i><?php echo h(date('g:i a',strtotime($job['Job']['end_time']))); ?>&nbsp;</i></h4>
+				          </p>
+				        </div>
+
+				        <div class="col-md-3">
+				          <h3>Available Positions</h3>
+				          <p>
+				          <h4><strong><?php echo h($job['Job']['available_positions']); ?>&nbsp;</strong></h4>
+				          </p>
+				        </div> 
+				    </div>    
 				</dl>
-			</div>
-			<div class="actions">
-				<h3><?php echo __('Actions'); ?></h3>
-				<ul>
-					<li><?php echo $this->Html->link(__('Edit Job'), array('action' => 'edit', $job['Job']['id'])); ?> </li>
-					<li><?php echo $this->Form->postLink(__('Delete Job'), array('action' => 'delete', $job['Job']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $job['Job']['id']))); ?> </li>
-					<li><?php echo $this->Html->link(__('List Jobs'), array('action' => 'index')); ?> </li>
-					<li><?php echo $this->Html->link(__('New Job'), array('action' => 'add')); ?> </li>
-					<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
-					<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
-				</ul>
+
+				<div class="container col-md-12 col-md-offset-0">
+						<br/>
+						<dt><h3><?php echo __('Details'); ?></h3></dt>
+						<dd><h4>
+							<?php echo h($job['Job']['details']); ?>
+							&nbsp;
+						</h4>
+						</dd>
+						<br/>
+				</div>
+
 			</div>
 		</div>
 	</div>
