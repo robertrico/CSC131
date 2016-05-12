@@ -23,8 +23,9 @@
 				</div>
 				<div class="col-md-12 text-center">
 					<br/>
-					<?php echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default pull-left')); ?>
-					<?php echo $this->Form->button(__('Cancel'),array('class'=>'btn btn-default pull-right'));?>
+					<?php echo $this->Form->submit(__('Add Job'),array('class'=>'btn btn-default')); ?>
+					<br/>
+					<?php echo $this->Html->link(__('Done adding Jobs'),array('controller'=>'events','action'=>'view',$event['Event']['id']),array('class'=>'btn btn-success')); ?>
 				</div>
 			<?php echo $this->Form->end(); ?>
 		</div>
