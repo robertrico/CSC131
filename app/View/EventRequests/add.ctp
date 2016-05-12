@@ -29,7 +29,7 @@
 </div>
 <script>
 $(document).ready(function(){
-	$('#EventRequestTime').datetimepicker({ 
+	$('#EventRequestTime').timepicker({ 
 		step : 15,
 		formatTime : 'g:i a',
 		formatDate : 'm/d/Y',
