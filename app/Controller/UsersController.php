@@ -94,7 +94,7 @@ class UsersController extends AppController {
 
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				if(!$permissions['Role']['student_control']){
+				if(!$role['Role']['student_control']){
 					$this->loadModel('StudentInfo');
 					$info = array();
 					$info['StudentInfo'] = array(
