@@ -7,12 +7,15 @@
 			<div class="jobs form">
 			<?php echo $this->Form->create('Job'); ?>
 				<fieldset>
-					<legend><?php echo __('Edit Job'); ?></legend>
+					<legend><?php echo __('Edit Job');?></legend>
 				<?php
 					echo $this->Form->input('id',array("class"=>"form-control"));
 					echo $this->Form->input('name',array("class"=>"form-control"));
 					echo $this->Form->input('details',array("class"=>"form-control"));
 					echo $this->Form->input('event_id',array("class"=>"form-control"));
+				?>
+				<br/>
+				<?php
 					echo $this->Form->input('available_positions');
 					echo $this->Form->input('start_time');
 					echo $this->Form->input('end_time');
