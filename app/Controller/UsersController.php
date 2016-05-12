@@ -87,10 +87,11 @@ class UsersController extends AppController {
 		$role = $this->Role->findById($role);
 
 		$this->set('student',!$role['Role']['student_control']);
-		$this->request->data['User']['role'] = $role;
-		$this->request->data['User']['active'] = 0;
 
 		if ($this->request->is('post')) {
+			$this->request->data['User']['role'] = $role['Role']['id'];
+			$this->request->data['User']['active'] = 0;
+
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				if(!$permissions['Role']['student_control']){
