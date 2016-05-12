@@ -13,6 +13,7 @@
 					<?php
 						echo $this->Form->input('time',array('type'=>'text','class'=>'form-control'));
 						echo $this->Form->input('name',array('class'=>'form-control'));
+						echo $this->Form->input('email',array('class'=>'form-control'));
 						echo $this->Form->input('details',array('class'=>'form-control','rows'=>'15'));
 						echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-default'));
 					?>
