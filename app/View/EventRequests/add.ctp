@@ -16,6 +16,7 @@
 						echo $this->Form->input('end_time',array('type'=>'text','class'=>'form-control'));
 						echo $this->Form->input('name',array('class'=>'form-control'));
 						echo $this->Form->input('email',array('class'=>'form-control'));
+						echo $this->Form->input('phone',array('class'=>'form-control'));
 						echo $this->Form->input('details',array('class'=>'form-control','rows'=>'15'));
 					?>
 				</div>
