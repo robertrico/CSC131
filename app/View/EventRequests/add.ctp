@@ -11,10 +11,9 @@
 					<p> To send a community event request to the MEP Office, simply fill out the form below, and press submit. </p>
 					<p> Be sure to be as detailed as possible, including potential jobs/tasks at the event, time slots for each of the jobs/tasks, and anything else that is important.</p>
 					<?php
-
 						echo $this->Form->input('time',array('label'=>'Start Time','type'=>'text','class'=>'form-control'));
 						echo $this->Form->input('end_time',array('type'=>'text','class'=>'form-control'));
-						echo $this->Form->input('name',array('class'=>'form-control'));
+						echo $this->Form->input('name',array('label'=>'Event Name','class'=>'form-control'));
 						echo $this->Form->input('email',array('class'=>'form-control'));
 						echo $this->Form->input('phone',array('class'=>'form-control'));
 						echo $this->Form->input('details',array('class'=>'form-control','rows'=>'15'));
