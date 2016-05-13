@@ -66,7 +66,7 @@
 							<?php echo $this->Html->link(__($job['Event']['name']), array('controller'=>'events','action' => 'view', $job['Event']['id'])); ?>
 						</td>
 						<td>
-							<?php echo date("m-d-Y",strtotime($job['Event']['time'])); ?>
+							<?php echo date("m-d-Y",strtotime($job['Event']['date'])); ?>
 						</td>
 						<td>
 							<?php echo $this->Html->link(__($job['Job']['name']), array('controller'=>'jobs','action' => 'view', $job['Job']['id'])); ?>
