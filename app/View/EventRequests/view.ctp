@@ -37,7 +37,7 @@
 								<br/>
 								<dt><h3><?php echo __('Contact Email'); ?></h3></dt>
 								<dd><h4>
-									<?php echo h($eventRequest['EventRequest']['Email']); ?>
+									<?php echo h($eventRequest['EventRequest']['email']); ?>
 									&nbsp;
 								</h4></dd>
 							</div>
@@ -45,7 +45,7 @@
 								<br/>
 								<dt><h3><?php echo __('Contact Phone'); ?></h3></dt>
 								<dd><h4>
-									<?php echo h($eventRequest['EventRequest']['Phone']); ?>
+									<?php echo h($eventRequest['EventRequest']['phone']); ?>
 									&nbsp;
 								</h4></dd>
 							</div>
