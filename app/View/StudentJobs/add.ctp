@@ -26,17 +26,6 @@
 			</div>
 			<div class="actions">
 			<br></br>
-				<h3><?php echo __('Actions'); ?></h3>
-				<ul>
-
-					<li><?php echo $this->Html->link(__('List Student Jobs'), array('action' => 'index')); ?></li>
-					<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
-					<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
-					<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-					<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-					<li><?php echo $this->Html->link(__('List Jobs'), array('controller' => 'jobs', 'action' => 'index')); ?> </li>
-					<li><?php echo $this->Html->link(__('New Job'), array('controller' => 'jobs', 'action' => 'add')); ?> </li>
-				</ul>
 			</div>
 		</div>
 	</div>
